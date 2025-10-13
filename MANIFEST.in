@@ -1,0 +1,5 @@
+include README.md
+include requirements.txt
+recursive-include brainviz/docs *.md
+recursive-include brainviz/examples *.py
+recursive-include brainviz/tests *.py
