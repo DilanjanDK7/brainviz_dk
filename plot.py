@@ -16,6 +16,86 @@ matplotlib.use("Agg", force=True)
 logger = logging.getLogger(__name__)
 
 
+# Quality presets for different use cases
+QUALITY_PRESETS = {
+    "draft": {
+        "dpi": 150,
+        "mesh": "fsaverage5",
+        "output_format": "png",
+        "radius": 3.0,  # Larger radius for faster computation
+        "description": "Fast preview quality",
+    },
+    "standard": {
+        "dpi": 300,
+        "mesh": "fsaverage",
+        "output_format": "png",
+        "radius": 2.0,
+        "description": "Standard quality for most uses",
+    },
+    "publication": {
+        "dpi": 600,
+        "mesh": "fsaverage",
+        "output_format": "svg",
+        "radius": 1.5,  # Smaller radius for sharper boundaries
+        "smooth_fwhm": None,
+        "interpolation": "linear",
+        "description": "High quality for publications (vector format)",
+    },
+    "print": {
+        "dpi": 1200,
+        "mesh": "fsaverage",
+        "output_format": "pdf",
+        "radius": 1.0,  # Very sharp
+        "smooth_fwhm": None,
+        "interpolation": "linear",
+        "rasterize_data": True,  # Rasterize data but keep text as vector
+        "description": "Very high quality for print",
+    },
+}
+
+
+def get_quality_preset(preset_name: str) -> dict:
+    """Get quality preset configuration.
+
+    Args:
+        preset_name: Name of preset ('draft', 'standard', 'publication', 'print')
+
+    Returns:
+        Dictionary of quality settings (excluding metadata like 'description')
+
+    Raises:
+        ValueError: If preset name is invalid
+
+    Example:
+        >>> settings = get_quality_preset('publication')
+        >>> plot_nifti(..., **settings)
+    """
+    if preset_name not in QUALITY_PRESETS:
+        available = ", ".join(QUALITY_PRESETS.keys())
+        raise ValueError(
+            f"Invalid preset '{preset_name}'. Available presets: {available}"
+        )
+
+    # Copy preset and remove metadata keys
+    preset = QUALITY_PRESETS[preset_name].copy()
+    preset.pop('description', None)  # Remove description - it's metadata
+    return preset
+
+
+def list_quality_presets() -> None:
+    """Print available quality presets and their descriptions."""
+    print("Available Quality Presets:")
+    print("-" * 60)
+    for name, config in QUALITY_PRESETS.items():
+        desc = config.get('description', 'No description')
+        dpi = config.get('dpi', 300)
+        fmt = config.get('output_format', 'png')
+        mesh = config.get('mesh', 'fsaverage')
+        print(f"  {name:12s} - {desc}")
+        print(f"               DPI: {dpi}, Format: {fmt.upper()}, Mesh: {mesh}")
+        print()
+
+
 def _auto_scaling_from_img(img: nib.spatialimages.SpatialImage) -> Tuple[Optional[float], Optional[float], Optional[float]]:
     """Compute automatic scaling parameters from image data.
 
@@ -121,12 +201,17 @@ def plot_nifti(
     darkness: float = 0.8,
     radius: float = 2.0,
     dpi: int = 300,
+    figsize: Optional[Tuple[float, float]] = None,
+    output_format: Optional[str] = None,
+    interpolation: str = "linear",
+    smooth_fwhm: Optional[float] = None,
+    rasterize_data: bool = False,
 ) -> str:
     """Render a single surface view with sulcal shading.
 
     Args:
         nifti_path: Path to NIfTI file
-        out_path: Output path for PNG file
+        out_path: Output path for image file
         hemi: Hemisphere ('left', 'right', 'lh', or 'rh')
         view: View angle ('lateral', 'medial', 'dorsal', 'ventral', 'anterior', 'posterior')
         mesh: Surface mesh resolution ('fsaverage' or 'fsaverage5')
@@ -135,10 +220,15 @@ def plot_nifti(
         alpha: Transparency of overlay (0-1)
         darkness: Darkness of sulcal shading (0-1)
         radius: Sampling radius in mm
-        dpi: Output resolution in dots per inch
+        dpi: Output resolution in dots per inch (300-1200 for publication)
+        figsize: Figure size as (width, height) in inches (None for auto)
+        output_format: Output format ('png', 'svg', 'pdf', 'eps', None=auto from extension)
+        interpolation: Volume-to-surface interpolation ('linear', 'nearest')
+        smooth_fwhm: Optional spatial smoothing kernel FWHM in mm
+        rasterize_data: Whether to rasterize data layer (useful for large datasets)
 
     Returns:
-        Path to saved PNG file
+        Path to saved image file
 
     Raises:
         FileNotFoundError: If NIfTI file doesn't exist
@@ -156,8 +246,8 @@ def plot_nifti(
     hemi_fetch = "lh" if hemi in ("lh", "left") else "rh"
 
     # Validate DPI
-    if dpi <= 0:
-        raise ValueError(f"dpi must be positive, got {dpi}")
+    if dpi <= 0 or dpi > 2400:
+        raise ValueError(f"dpi must be between 1 and 2400, got {dpi}")
 
     # Validate alpha and darkness
     if not 0 <= alpha <= 1:
@@ -165,7 +255,35 @@ def plot_nifti(
     if not 0 <= darkness <= 1:
         raise ValueError(f"darkness must be between 0 and 1, got {darkness}")
 
+    # Validate figsize
+    if figsize is not None:
+        if len(figsize) != 2 or any(s <= 0 for s in figsize):
+            raise ValueError(f"figsize must be (width, height) with positive values, got {figsize}")
+
+    # Validate output format
+    if output_format is not None:
+        valid_formats = {'png', 'svg', 'pdf', 'eps'}
+        if output_format.lower() not in valid_formats:
+            raise ValueError(f"output_format must be one of {valid_formats}, got '{output_format}'")
+    else:
+        # Auto-detect from file extension
+        ext = os.path.splitext(out_path)[1].lower()
+        if ext in ['.png', '.svg', '.pdf', '.eps']:
+            output_format = ext[1:]  # Remove the dot
+        else:
+            output_format = 'png'  # Default
+
+    # Validate interpolation
+    if interpolation not in {'linear', 'nearest'}:
+        raise ValueError(f"interpolation must be 'linear' or 'nearest', got '{interpolation}'")
+
     img = nib.load(nifti_path)
+
+    # Apply smoothing if requested
+    if smooth_fwhm is not None and smooth_fwhm > 0:
+        img = image.smooth_img(img, fwhm=smooth_fwhm)
+        logger.info(f"Applied spatial smoothing: {smooth_fwhm}mm FWHM")
+
     vmin, vmax, threshold = _auto_scaling_from_img(img)
 
     surf_mesh, sulc_map, texture = project_volume_to_surface(
@@ -174,9 +292,15 @@ def plot_nifti(
         mesh=mesh,
         surface_name=surface_name,
         radius=radius,
+        interpolation=interpolation,
+        smooth_fwhm_mm=smooth_fwhm,
     )
 
     _ensure_dir(os.path.dirname(out_path))
+
+    # Set figure size if specified
+    if figsize is not None:
+        plt.rcParams['figure.figsize'] = figsize
 
     fig = plotting.plot_surf_stat_map(
         surf_mesh,
@@ -193,10 +317,47 @@ def plot_nifti(
         vmax=vmax,
         alpha=alpha,
     )
-    fig.savefig(out_path, dpi=dpi, bbox_inches='tight')
+
+    # Apply rasterization to data layer if requested (keeps text as vector)
+    if rasterize_data:
+        for ax in fig.axes:
+            for artist in ax.get_children():
+                # Rasterize images but keep text/labels as vectors
+                if hasattr(artist, 'set_rasterized'):
+                    artist.set_rasterized(True)
+
+    # High-quality save settings
+    save_kwargs = {
+        'dpi': dpi,
+        'bbox_inches': 'tight',
+        'format': output_format,
+        'facecolor': 'white',
+        'edgecolor': 'none',
+    }
+
+    # Format-specific optimizations
+    if output_format == 'png':
+        save_kwargs['pil_kwargs'] = {'optimize': True}
+    elif output_format in ['pdf', 'eps']:
+        save_kwargs['backend'] = 'pgf' if dpi > 600 else None
+    elif output_format == 'svg':
+        save_kwargs['transparent'] = False
+
+    # Ensure correct file extension
+    base, ext = os.path.splitext(out_path)
+    if ext.lower() != f'.{output_format}':
+        out_path = f"{base}.{output_format}"
+
+    fig.savefig(out_path, **save_kwargs)
 
     # Close matplotlib figure to free memory
     plt.close(fig)
+
+    # Reset figsize if it was changed
+    if figsize is not None:
+        plt.rcParams['figure.figsize'] = plt.rcParamsDefault['figure.figsize']
+
+    logger.info(f"Saved {output_format.upper()} at {dpi} DPI: {out_path}")
 
     return out_path
 
@@ -211,21 +372,33 @@ def generate_four_views(
     surface_name: str = "pial",
     colormap: str = "jet",
     prefix: Optional[str] = None,
+    dpi: int = 300,
+    figsize: Optional[Tuple[float, float]] = None,
+    output_format: Optional[str] = None,
+    interpolation: str = "linear",
+    smooth_fwhm: Optional[float] = None,
+    rasterize_data: bool = False,
 ) -> List[str]:
     """Create multiple surface view images for requested hemispheres.
 
     Args:
         nifti_path: Path to NIfTI file
-        out_dir: Output directory for PNG files
+        out_dir: Output directory for image files
         hemis: Tuple of hemispheres to render ('lh', 'rh', 'left', 'right')
         views: Tuple of views to render
         mesh: Surface mesh resolution
         surface_name: Surface type
         colormap: Matplotlib colormap name
         prefix: Optional filename prefix (default: NIfTI filename)
+        dpi: Output resolution in dots per inch
+        figsize: Figure size as (width, height) in inches
+        output_format: Output format ('png', 'svg', 'pdf', 'eps')
+        interpolation: Volume-to-surface interpolation method
+        smooth_fwhm: Optional spatial smoothing kernel FWHM in mm
+        rasterize_data: Whether to rasterize data layer
 
     Returns:
-        List of paths to generated PNG files
+        List of paths to generated image files
 
     Raises:
         FileNotFoundError: If NIfTI file doesn't exist
@@ -237,12 +410,16 @@ def generate_four_views(
     outputs: List[str] = []
     base = prefix or os.path.splitext(os.path.basename(nifti_path))[0]
 
+    # Determine file extension from output format
+    fmt = output_format or 'png'
+    ext = f".{fmt}"
+
     for hemi in hemis:
         for view in views:
-            fn = f"{base}_{hemi}_{view}.png"
+            fn = f"{base}_{hemi}_{view}{ext}"
             out_path = os.path.join(out_dir, fn)
             try:
-                plot_nifti(
+                result_path = plot_nifti(
                     nifti_path,
                     out_path,
                     hemi=hemi,
@@ -250,8 +427,14 @@ def generate_four_views(
                     mesh=mesh,
                     surface_name=surface_name,
                     colormap=colormap,
+                    dpi=dpi,
+                    figsize=figsize,
+                    output_format=output_format,
+                    interpolation=interpolation,
+                    smooth_fwhm=smooth_fwhm,
+                    rasterize_data=rasterize_data,
                 )
-                outputs.append(out_path)
+                outputs.append(result_path)
             except Exception as e:
                 # Continue other renders even if one fails
                 logger.warning(f"Failed to render {hemi} {view}: {e}")
@@ -267,17 +450,28 @@ def generate_all_standard_views(
     surface_name: str = "pial",
     colormap: str = "jet",
     prefix: Optional[str] = None,
+    **plot_kwargs,
 ) -> List[str]:
     """Generate all standard neuroimaging views.
-    
-    Creates 10 views total:
+
+    Creates 12 views total:
     - Left hemisphere: lateral, medial, dorsal, ventral, anterior, posterior
     - Right hemisphere: lateral, medial, dorsal, ventral, anterior, posterior
-    
-    Returns list of output file paths.
+
+    Args:
+        nifti_path: Path to NIfTI file
+        out_dir: Output directory
+        mesh: Surface mesh resolution
+        surface_name: Surface type
+        colormap: Colormap name
+        prefix: Optional filename prefix
+        **plot_kwargs: Additional arguments passed to plot_nifti (dpi, figsize, etc.)
+
+    Returns:
+        List of output file paths
     """
     standard_views = ["lateral", "medial", "dorsal", "ventral", "anterior", "posterior"]
-    
+
     return generate_four_views(
         nifti_path,
         out_dir,
@@ -287,6 +481,7 @@ def generate_all_standard_views(
         surface_name=surface_name,
         colormap=colormap,
         prefix=prefix,
+        **plot_kwargs,
     )
 
 

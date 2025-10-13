@@ -14,14 +14,44 @@ from .plot import (
     generate_all_standard_views,
     plot_3d_interactive,
     project_volume_to_surface,
+    get_quality_preset,
+    list_quality_presets,
+    QUALITY_PRESETS,
+)
+
+from .volumetric import (
+    plot_volumetric_slices,
+    plot_glass_brain,
+    plot_mosaic,
+    plot_roi_overlay,
+)
+
+from .templates import (
+    TemplateManager,
+    get_template,
+    list_available_templates,
 )
 
 __all__ = [
+    # Surface plotting
     "plot_nifti",
     "generate_four_views",
     "generate_all_standard_views",
     "plot_3d_interactive",
     "project_volume_to_surface",
+    # Quality presets
+    "get_quality_preset",
+    "list_quality_presets",
+    "QUALITY_PRESETS",
+    # Volumetric plotting
+    "plot_volumetric_slices",
+    "plot_glass_brain",
+    "plot_mosaic",
+    "plot_roi_overlay",
+    # Template management
+    "TemplateManager",
+    "get_template",
+    "list_available_templates",
 ]
 
 

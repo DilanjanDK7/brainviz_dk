@@ -2,3 +2,4 @@ numpy>=1.19.0
 nibabel>=3.0.0
 nilearn>=0.9.0
 matplotlib>=3.3.0
+templateflow>=0.8.0
