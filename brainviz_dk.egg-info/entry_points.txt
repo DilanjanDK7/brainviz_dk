@@ -1,0 +1,2 @@
+[console_scripts]
+brainviz_dk = brainviz_dk.__main__:main

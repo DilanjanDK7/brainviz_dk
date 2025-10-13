@@ -1,8 +1,35 @@
+Metadata-Version: 2.4
+Name: brainviz_dk
+Version: 0.1.0
+Summary: Lightweight 3D brain plotting utilities without MNE
+Home-page: https://github.com/dilanjan/brainviz_dk
+Author: Dilanjan DK
+Author-email: Dilanjan DK <ddiyabal@uwo.ca>
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Scientific/Engineering :: Medical Science Apps.
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.19.0
+Requires-Dist: nibabel>=3.0.0
+Requires-Dist: nilearn>=0.9.0
+Requires-Dist: matplotlib>=3.3.0
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
 # BrainViz_DK
 
-**Lightweight 3D brain plotting utilities*
+**Lightweight 3D brain plotting utilities without MNE**
 
-BrainViz_DK is a simple Python package for creating high-quality 3D brain visualizations from NIfTI files. It uses Nilearn for volume-to-surface projection and matplotlib for rendering, providing beautiful sulcal-shaded brain plots ..
+BrainViz_DK is a simple Python package for creating high-quality 3D brain visualizations from NIfTI files. It uses Nilearn for volume-to-surface projection and matplotlib for rendering, providing beautiful sulcal-shaded brain plots without requiring MNE-Python or FreeSurfer.
 
 ## Features
 
