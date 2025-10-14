@@ -3,7 +3,7 @@
 Setup script for BrainViz package
 """
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -17,9 +17,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dilanjan/brainviz_dk",
-    py_modules=["plot", "__init__", "__main__"],
-    packages=["brainviz_dk"],
-    package_dir={"brainviz_dk": "."},
+    packages=find_packages(),
     keywords=[
         "neuroimaging",
         "brain",
@@ -58,6 +56,9 @@ setup(
         "dev": [
             "pytest>=6.0",
             "pytest-cov>=2.0",
+        ],
+        "templates": [
+            "templateflow>=0.8.0",
         ],
     },
     entry_points={

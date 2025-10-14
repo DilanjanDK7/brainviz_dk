@@ -28,5 +28,14 @@ dependencies = [
     "matplotlib>=3.3.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+]
+templates = [
+    "templateflow>=0.8.0",
+]
+
 [project.scripts]
 brainviz_dk = "brainviz_dk.__main__:main"

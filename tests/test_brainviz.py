@@ -7,26 +7,25 @@ Generates sample plots to verify functionality.
 import os
 import sys
 
-# Add current directory to path so we can import brainviz
-sys.path.insert(0, '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748')
-
 from brainviz_dk import generate_four_views, plot_nifti
+from test_config import test_config, get_test_nifti_path
 
 def main():
     print("="*60)
     print("Testing BrainViz_DK Package")
     print("="*60)
     
-    # Test file
-    test_nifti = '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748/qie/whole_brain/MNI152NLin2009cAsym/group_mean.nii.gz'
-    output_dir = '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748/Plots_BrainViz_Test'
+    # Get test file
+    test_nifti = get_test_nifti_path()
+    if test_nifti is None:
+        print("ERROR: No test data available.")
+        print("Please set BRAINVIZ_TEST_DATA_DIR environment variable or place test data in test_data/")
+        return 1
+    
+    output_dir = test_config.temp_dir / "Plots_BrainViz_Test"
     
     print(f"\nTest NIfTI: {test_nifti}")
     print(f"Output dir: {output_dir}")
-    
-    if not os.path.exists(test_nifti):
-        print(f"ERROR: Test file not found: {test_nifti}")
-        return 1
     
     os.makedirs(output_dir, exist_ok=True)
     
@@ -35,7 +34,7 @@ def main():
     print("="*60)
     try:
         out_path = plot_nifti(
-            test_nifti,
+            str(test_nifti),
             os.path.join(output_dir, "test_single_lh_lateral.png"),
             hemi="lh",
             view="lateral",
@@ -55,14 +54,14 @@ def main():
     print("="*60)
     try:
         outputs = generate_four_views(
-            test_nifti,
-            output_dir,
+            str(test_nifti),
+            str(output_dir),
             hemis=("lh", "rh"),
             views=("lateral", "medial", "dorsal", "ventral"),
             mesh="fsaverage",
             surface_name="pial",
             colormap="jet",
-            prefix="qie_group_mean",
+            prefix="test_group_mean",
         )
         print(f"✓ Generated {len(outputs)} images:")
         for out in outputs:
@@ -78,14 +77,14 @@ def main():
     print("="*60)
     try:
         outputs = generate_four_views(
-            test_nifti,
-            output_dir,
+            str(test_nifti),
+            str(output_dir),
             hemis=("lh",),  # Just left hemisphere
             views=("lateral", "medial"),
             mesh="fsaverage",
             surface_name="pial",
             colormap="hot",
-            prefix="qie_group_mean_hot",
+            prefix="test_group_mean_hot",
         )
         print(f"✓ Generated {len(outputs)} images with 'hot' colormap")
         for out in outputs:
@@ -101,14 +100,14 @@ def main():
     print("="*60)
     try:
         outputs = generate_four_views(
-            test_nifti,
-            output_dir,
+            str(test_nifti),
+            str(output_dir),
             hemis=("lh",),
             views=("lateral",),
             mesh="fsaverage",
             surface_name="inflated",
             colormap="jet",
-            prefix="qie_group_mean_inflated",
+            prefix="test_group_mean_inflated",
         )
         print(f"✓ Generated {len(outputs)} images with inflated surface")
         for out in outputs:

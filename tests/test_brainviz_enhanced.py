@@ -7,15 +7,13 @@ Tests: all standard views, 3D interactive plots, and various configurations.
 import os
 import sys
 
-# Add current directory to path
-sys.path.insert(0, '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748')
-
 from brainviz_dk import (
     generate_four_views,
     generate_all_standard_views,
     plot_3d_interactive,
     plot_nifti
 )
+from test_config import test_config, get_test_nifti_path
 
 
 def main():
@@ -23,13 +21,14 @@ def main():
     print("BrainViz_DK Enhanced Testing Suite")
     print("="*70)
     
-    # Test file
-    test_nifti = '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748/qie/whole_brain/MNI152NLin2009cAsym/group_mean.nii.gz'
-    output_base = '/media/brainlab-uwo/Data2/Results/Group_level_analysis/ds002748/Plots_BrainViz_Enhanced'
-    
-    if not os.path.exists(test_nifti):
-        print(f"ERROR: Test file not found: {test_nifti}")
+    # Get test file
+    test_nifti = get_test_nifti_path()
+    if test_nifti is None:
+        print("ERROR: No test data available.")
+        print("Please set BRAINVIZ_TEST_DATA_DIR environment variable or place test data in test_data/")
         return 1
+    
+    output_base = test_config.temp_dir / "Plots_BrainViz_Enhanced"
     
     # Test 1: All standard neuroimaging views
     print("\n" + "="*70)
@@ -40,12 +39,12 @@ def main():
     try:
         output_dir = os.path.join(output_base, "all_standard_views")
         outputs = generate_all_standard_views(
-            test_nifti,
-            output_dir,
+            str(test_nifti),
+            str(output_dir),
             mesh="fsaverage",
             surface_name="pial",
             colormap="jet",
-            prefix="qie_all_views"
+            prefix="test_all_views"
         )
         print(f"✓ SUCCESS: Generated {len(outputs)} views")
         for out in outputs[:3]:  # Show first 3
@@ -65,14 +64,14 @@ def main():
     try:
         output_dir = os.path.join(output_base, "custom_views")
         outputs = generate_four_views(
-            test_nifti,
-            output_dir,
+            str(test_nifti),
+            str(output_dir),
             hemis=("lh", "rh"),
             views=("anterior", "posterior"),
             mesh="fsaverage",
             surface_name="pial",
             colormap="plasma",
-            prefix="qie_custom"
+            prefix="test_custom"
         )
         print(f"✓ SUCCESS: Generated {len(outputs)} custom views")
         for out in outputs:
@@ -92,12 +91,12 @@ def main():
         os.makedirs(output_dir, exist_ok=True)
         
         view = plot_3d_interactive(
-            test_nifti,
+            str(test_nifti),
             colormap="jet",
-            title="QIE Group Mean - Interactive 3D"
+            title="Test Group Mean - Interactive 3D"
         )
         
-        html_path = os.path.join(output_dir, "qie_interactive_3d.html")
+        html_path = os.path.join(output_dir, "test_interactive_3d.html")
         view.save_as_html(html_path)
         
         print(f"✓ SUCCESS: Saved interactive 3D HTML")
@@ -117,14 +116,14 @@ def main():
         try:
             output_dir = os.path.join(output_base, f"surface_{surface}")
             outputs = generate_four_views(
-                test_nifti,
-                output_dir,
+                str(test_nifti),
+                str(output_dir),
                 hemis=("lh",),
                 views=("lateral",),
                 mesh="fsaverage",
                 surface_name=surface,
                 colormap="jet",
-                prefix=f"qie_{surface}"
+                prefix=f"test_{surface}"
             )
             print(f"✓ {surface.upper()}: {os.path.basename(outputs[0])}")
         except Exception as e:
@@ -140,14 +139,14 @@ def main():
         try:
             output_dir = os.path.join(output_base, "colormap_comparison")
             outputs = generate_four_views(
-                test_nifti,
-                output_dir,
+                str(test_nifti),
+                str(output_dir),
                 hemis=("lh",),
                 views=("lateral",),
                 mesh="fsaverage",
                 surface_name="pial",
                 colormap=cmap,
-                prefix=f"qie_{cmap}"
+                prefix=f"test_{cmap}"
             )
             print(f"✓ {cmap.upper()}: {os.path.basename(outputs[0])}")
         except Exception as e:
@@ -162,14 +161,14 @@ def main():
         try:
             output_dir = os.path.join(output_base, f"mesh_{mesh}")
             outputs = generate_four_views(
-                test_nifti,
-                output_dir,
+                str(test_nifti),
+                str(output_dir),
                 hemis=("lh",),
                 views=("lateral",),
                 mesh=mesh,
                 surface_name="pial",
                 colormap="jet",
-                prefix=f"qie_{mesh}"
+                prefix=f"test_{mesh}"
             )
             print(f"✓ {mesh}: {os.path.basename(outputs[0])}")
         except Exception as e:

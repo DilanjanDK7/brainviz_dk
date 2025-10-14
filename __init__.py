@@ -32,6 +32,10 @@ from .templates import (
     list_available_templates,
 )
 
+from .interactive3d import (
+    plot_interactive_surface_plotly,
+)
+
 __all__ = [
     # Surface plotting
     "plot_nifti",
@@ -39,6 +43,8 @@ __all__ = [
     "generate_all_standard_views",
     "plot_3d_interactive",
     "project_volume_to_surface",
+    # Interactive 3D
+    "plot_interactive_surface_plotly",
     # Quality presets
     "get_quality_preset",
     "list_quality_presets",

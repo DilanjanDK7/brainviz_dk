@@ -1,0 +1,1064 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrainViz_DK Documentation &mdash; BrainViz_DK 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            BrainViz_DK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-pypi-recommended">From PyPI (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-source">From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#development-installation">Development Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-templateflow-setup">Optional: TemplateFlow Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#missing-dependencies">Missing Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#template-download-issues">Template Download Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#memory-issues">Memory Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#platform-specific-notes">Platform-Specific Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-surface-plotting">Basic Surface Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#single-view">Single View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#multiple-views">Multiple Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#all-standard-views">All Standard Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#quality-presets">Quality Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#draft-fast-preview">Draft (Fast Preview)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#publication-quality">Publication Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#list-available-presets">List Available Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#volumetric-visualization">Volumetric Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#orthogonal-slices">Orthogonal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#mosaic-view">Mosaic View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#template-management">Template Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#list-available-templates">List Available Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#load-a-template">Load a Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#command-line-interface">Command-Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#volumetric-plots">Volumetric Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#quality-control">Quality Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#utility-commands">Utility Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#custom-figure-size">Custom Figure Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#threshold-and-colormap">Threshold and Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#batch-processing-multiple-files">Batch Processing Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#roi-overlay">ROI Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-1-quality-check">Workflow 1: Quality Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-2-publication-figure">Workflow 2: Publication Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-3-group-analysis-report">Workflow 3: Group Analysis Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#main-options">Main Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#utility-commands">Utility Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#surface-plotting-options">Surface Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#volumetric-plotting-options">Volumetric Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#quality-output-options">Quality &amp; Output Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#style-options">Style Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#general-options">General Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#complete-examples">Complete Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#surface-plotting">Surface Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#volumetric-plotting">Volumetric Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#d-interactive">3D Interactive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#roi-overlay">ROI Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#custom-quality-settings">Custom Quality Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#thresholded-statistical-map">Thresholded Statistical Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#large-custom-figure">Large Custom Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#batch-processing-script">Batch Processing Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#exit-codes">Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quality_presets.html">Quality Presets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#available-presets">Available Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#draft">draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#standard">standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#publication">publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#print">print</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#comparison-table">Comparison Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#using-presets">Using Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#python-api">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#command-line-interface">Command-Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#custom-quality-settings">Custom Quality Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#id1">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#id2">Command-Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#choosing-the-right-preset">Choosing the Right Preset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#decision-flowchart">Decision Flowchart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#by-use-case">By Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#performance-considerations">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#processing-time">Processing Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#disk-space">Disk Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#memory-usage">Memory Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#format-recommendations">Format Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#png-raster">PNG (Raster)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#svg-vector">SVG (Vector)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#pdf-vector">PDF (Vector)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#eps-vector">EPS (Vector)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#advanced-tips">Advanced Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#optimizing-for-specific-journals">Optimizing for Specific Journals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#batch-processing-with-presets">Batch Processing with Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Brain Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#available-templates">Available Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152-nilearn">MNI152 (nilearn)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152nlin2009casym-templateflow">MNI152NLin2009cAsym (TemplateFlow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#fsaverage-nilearn">fsaverage (nilearn)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-manager">Template Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#list-available-templates">List Available Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#loading-templates">Loading Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#using-templates-in-plotting">Using Templates in Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#volumetric-slices">Volumetric Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mosaic">Mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#command-line-usage">Command-Line Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-details">Template Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152-template">MNI152 Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152nlin2009casym-template">MNI152NLin2009cAsym Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-resolution">Template Resolution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#choosing-resolution">Choosing Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#custom-template-path">Custom Template Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-metadata">Template Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#templateflow-configuration">TemplateFlow Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#set-custom-cache-directory">Set Custom Cache Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#manual-template-download">Manual Template Download</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-not-found">Template Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-download-fails">Template Download Fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#memory-issues-with-high-resolution-templates">Memory Issues with High-Resolution Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-comparison">Template Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/surface_plotting.html">Surface Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#single-hemisphere-single-view">Single Hemisphere, Single View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#both-hemispheres">Both Hemispheres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#all-standard-views">All Standard Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#quality-settings">Quality Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#draft-quality-fast-preview">Draft Quality (Fast Preview)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#publication-quality">Publication Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-quality">Custom Quality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#surface-types">Surface Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#pial-surface-default">Pial Surface (Default)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#inflated-surface">Inflated Surface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#white-matter-surface">White Matter Surface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#colormap-examples">Colormap Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#hot-colormap">Hot Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#coolwarm-colormap">Coolwarm Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-colormaps">Custom Colormaps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#advanced-styling">Advanced Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-alpha-and-darkness">Custom Alpha and Darkness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-radius">Custom Radius</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#with-smoothing">With Smoothing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#batch-processing">Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#process-multiple-files">Process Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#generate-all-views-for-multiple-files">Generate All Views for Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-view-combinations">Custom View Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#publication-workflows">Publication Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#single-figure-for-paper">Single Figure for Paper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#multi-panel-figure">Multi-Panel Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#supplementary-materials">Supplementary Materials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#interactive-3d">Interactive 3D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#generate-interactive-html">Generate Interactive HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#with-custom-threshold">With Custom Threshold</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#complete-example-script">Complete Example Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#full-analysis-pipeline">Full Analysis Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/volumetric_plotting.html">Volumetric Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#orthogonal-slices-3-plane-view">Orthogonal Slices (3-Plane View)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#mosaic-view">Mosaic View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#display-modes">Display Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#axial-slices">Axial Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#sagittal-slices">Sagittal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coronal-slices">Coronal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#two-plane-combinations">Two-Plane Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#glass-brain-variations">Glass Brain Variations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#standard-glass-brain">Standard Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#black-background">Black Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#single-plane-glass-brain">Single Plane Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#left-right-hemisphere-glass-brain">Left/Right Hemisphere Glass Brain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#mosaic-displays">Mosaic Displays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#axial-mosaic-20-slices">Axial Mosaic (20 Slices)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#sagittal-mosaic">Sagittal Mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coronal-mosaic">Coronal Mosaic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#statistical-maps">Statistical Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#t-statistic-map-with-threshold">T-Statistic Map with Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#positive-activations-only">Positive Activations Only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#correlation-map">Correlation Map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#roi-visualization">ROI Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#roi-overlay">ROI Overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#parcellation-atlas">Parcellation Atlas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#template-options">Template Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#default-mni152">Default MNI152</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#fmriprep-template-icbm152">fMRIPrep Template (ICBM152)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#colormaps-for-volumetric-data">Colormaps for Volumetric Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#hot-classic">Hot (Classic)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coolwarm-diverging">Coolwarm (Diverging)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#viridis-perceptually-uniform">Viridis (Perceptually Uniform)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#plasma">Plasma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#cold-hot-diverging">Cold-Hot (Diverging)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#advanced-options">Advanced Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-slice-coordinates">Custom Slice Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#without-annotations">Without Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-figure-size">Custom Figure Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-title">Custom Title</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#batch-processing">Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#process-multiple-files">Process Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#multiple-display-modes">Multiple Display Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#complete-volumetric-pipeline">Complete Volumetric Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/batch_processing.html">Batch Processing Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#basic-batch-processing">Basic Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#process-multiple-nifti-files">Process Multiple NIfTI Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multiple-subjects">Multiple Subjects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multiple-views-per-subject">Multiple Views Per Subject</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#advanced-batch-processing">Advanced Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#with-progress-tracking">With Progress Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#parallel-processing">Parallel Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#with-error-handling">With Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#multiple-contrasts">Multiple Contrasts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#process-different-statistical-maps">Process Different Statistical Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#group-level-analysis">Group-Level Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#quality-workflows">Quality Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#draft-standard-publication">Draft → Standard → Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multi-format-export">Multi-Format Export</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#complete-batch-pipeline">Complete Batch Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#full-analysis-script">Full Analysis Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#configuration-file-approach">Configuration File Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#using-config-file">Using Config File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#performance-tips">Performance Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#memory-efficient-batch-processing">Memory-Efficient Batch Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#optimize-for-speed">Optimize for Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/quality_comparison.html">Quality Comparison Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-preset-overview">Quality Preset Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#generate-all-quality-levels">Generate All Quality Levels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#draft-vs-standard-vs-publication">Draft vs Standard vs Publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#side-by-side-comparison">Side-by-Side Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#dpi-comparison">DPI Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#different-dpi-settings">Different DPI Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#dpi-impact-on-file-size">DPI Impact on File Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#mesh-resolution-comparison">Mesh Resolution Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#fsaverage5-vs-fsaverage">fsaverage5 vs fsaverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#format-comparison">Format Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#png-vs-svg-vs-pdf">PNG vs SVG vs PDF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#use-case-scenarios">Use Case Scenarios</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-1-quick-quality-check">Scenario 1: Quick Quality Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-2-lab-meeting-presentation">Scenario 2: Lab Meeting Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-3-journal-manuscript">Scenario 3: Journal Manuscript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-4-conference-poster">Scenario 4: Conference Poster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#custom-quality-configurations">Custom Quality Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#optimized-for-web">Optimized for Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#optimized-for-print">Optimized for Print</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#balanced-quality-speed">Balanced Quality/Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-metrics">Quality Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#complete-quality-benchmark">Complete Quality Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#decision-guide">Decision Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#trade-offs-summary">Trade-offs Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/plot.html">Surface Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.get_quality_preset"><code class="docutils literal notranslate"><span class="pre">get_quality_preset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.list_quality_presets"><code class="docutils literal notranslate"><span class="pre">list_quality_presets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.project_volume_to_surface"><code class="docutils literal notranslate"><span class="pre">project_volume_to_surface()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_nifti"><code class="docutils literal notranslate"><span class="pre">plot_nifti()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_four_views"><code class="docutils literal notranslate"><span class="pre">generate_four_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_all_standard_views"><code class="docutils literal notranslate"><span class="pre">generate_all_standard_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_3d_interactive"><code class="docutils literal notranslate"><span class="pre">plot_3d_interactive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#main-functions">Main Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#plot-nifti">plot_nifti</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id0"><code class="docutils literal notranslate"><span class="pre">plot_nifti()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#generate-four-views">generate_four_views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id1"><code class="docutils literal notranslate"><span class="pre">generate_four_views()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#generate-all-standard-views">generate_all_standard_views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id2"><code class="docutils literal notranslate"><span class="pre">generate_all_standard_views()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#plot-3d-interactive">plot_3d_interactive</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id3"><code class="docutils literal notranslate"><span class="pre">plot_3d_interactive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#quality-presets">Quality Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#get-quality-preset">get_quality_preset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id4"><code class="docutils literal notranslate"><span class="pre">get_quality_preset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#list-quality-presets">list_quality_presets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id5"><code class="docutils literal notranslate"><span class="pre">list_quality_presets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#id6">QUALITY_PRESETS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#plot.QUALITY_PRESETS"><code class="docutils literal notranslate"><span class="pre">QUALITY_PRESETS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#utility-functions">Utility Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#project-volume-to-surface">project_volume_to_surface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id9"><code class="docutils literal notranslate"><span class="pre">project_volume_to_surface()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#parameters-reference">Parameters Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#common-parameters">Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#view-angles">View Angles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#surface-types">Surface Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#mesh-resolutions">Mesh Resolutions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#basic-surface-plot">Basic Surface Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#high-resolution-publication-figure">High-Resolution Publication Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#multiple-views">Multiple Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#custom-styling">Custom Styling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/volumetric.html">Volumetric Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_volumetric_slices"><code class="docutils literal notranslate"><span class="pre">plot_volumetric_slices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_glass_brain"><code class="docutils literal notranslate"><span class="pre">plot_glass_brain()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_mosaic"><code class="docutils literal notranslate"><span class="pre">plot_mosaic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_roi_overlay"><code class="docutils literal notranslate"><span class="pre">plot_roi_overlay()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#main-functions">Main Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-volumetric-slices">plot_volumetric_slices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id0"><code class="docutils literal notranslate"><span class="pre">plot_volumetric_slices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-glass-brain">plot_glass_brain</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id1"><code class="docutils literal notranslate"><span class="pre">plot_glass_brain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-mosaic">plot_mosaic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id2"><code class="docutils literal notranslate"><span class="pre">plot_mosaic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-roi-overlay">plot_roi_overlay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id3"><code class="docutils literal notranslate"><span class="pre">plot_roi_overlay()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#parameters-reference">Parameters Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#common-parameters">Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#display-modes">Display Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#orthogonal-slices">Orthogonal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#axial-slices">Axial Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#mosaic-view">Mosaic View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#thresholded-statistical-map">Thresholded Statistical Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#roi-overlay">ROI Overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#custom-colormap">Custom Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#sagittal-slices-with-annotations">Sagittal Slices with Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#batch-glass-brain-generation">Batch Glass Brain Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#specific-slice-coordinates">Specific Slice Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#custom-value-range">Custom Value Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#large-figure-size">Large Figure Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#colormap-recommendations">Colormap Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-activation-maps">For Activation Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-statistical-maps">For Statistical Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-roi-parcellations">For ROI/Parcellations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/templates.html">Template Management API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.TemplateManager"><code class="docutils literal notranslate"><span class="pre">TemplateManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.TEMPLATES"><code class="docutils literal notranslate"><span class="pre">TemplateManager.TEMPLATES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.__init__"><code class="docutils literal notranslate"><span class="pre">TemplateManager.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.list_templates"><code class="docutils literal notranslate"><span class="pre">TemplateManager.list_templates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_template"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_template()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_template_path"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_template_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_surface_mesh"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_surface_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.get_template"><code class="docutils literal notranslate"><span class="pre">get_template()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.list_available_templates"><code class="docutils literal notranslate"><span class="pre">list_available_templates()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templatemanager">TemplateManager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id0"><code class="docutils literal notranslate"><span class="pre">TemplateManager</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#get-template">get_template</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id7"><code class="docutils literal notranslate"><span class="pre">get_template()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#list-available-templates">list_available_templates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id8"><code class="docutils literal notranslate"><span class="pre">list_available_templates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#available-templates">Available Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#nilearn-templates">nilearn Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templateflow-templates">TemplateFlow Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#template-information-structure">Template Information Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#basic-template-loading">Basic Template Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#using-with-plotting-functions">Using with Plotting Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#loading-templateflow-templates">Loading TemplateFlow Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#getting-template-information">Getting Template Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#checking-template-availability">Checking Template Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#loading-multiple-templates">Loading Multiple Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#custom-template-cache">Custom Template Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#direct-templateflow-access">Direct TemplateFlow Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#template-comparison">Template Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#error-handling">Error Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#template-not-found">Template Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templateflow-not-installed">TemplateFlow Not Installed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#invalid-resolution">Invalid Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#fork-and-clone">Fork and Clone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#development-setup">Development Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#create-a-branch">1. Create a Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#make-changes">2. Make Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#run-tests">3. Run Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#build-documentation">4. Build Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#commit-changes">5. Commit Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#push-and-create-pr">6. Push and Create PR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#code-style">Code Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#python-style">Python Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#testing">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#test-structure">Test Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#writing-tests">Writing Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#running-specific-tests">Running Specific Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#building-docs">Building Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#adding-documentation">Adding Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#example-documentation-section">Example Documentation Section</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-guidelines">Pull Request Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#before-submitting">Before Submitting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#pr-description">PR Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#review-process">Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#id1">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#code-review-checklist">Code Review Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#for-reviewers">For Reviewers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#for-contributors">For Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-tips">Development Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#debugging-tests">Debugging Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#testing-with-real-data">Testing with Real Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#performance-profiling">Performance Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#questions">Questions?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">[0.1.0] - 2025-10-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#unreleased">[Unreleased]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-history">Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#contributing">Contributing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BrainViz_DK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BrainViz_DK Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="brainviz-dk-documentation">
+<h1>BrainViz_DK Documentation<a class="headerlink" href="#brainviz-dk-documentation" title="Link to this heading"></a></h1>
+<p><strong>BrainViz_DK</strong> is a comprehensive neuroimaging visualization toolkit that provides high-quality brain plotting capabilities for both surface and volumetric data.</p>
+<a class="reference external image-reference" href="https://www.python.org/downloads/"><img alt="Python Version" src="https://img.shields.io/badge/python-3.8%2B-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://opensource.org/licenses/MIT"><img alt="License" src="https://img.shields.io/badge/license-MIT-green.svg" />
+</a>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Surface Plotting</strong></dt><dd><ul class="simple">
+<li><p>High-resolution cortical surface visualization</p></li>
+<li><p>Multiple viewing angles (lateral, medial, dorsal, ventral, anterior, posterior)</p></li>
+<li><p>fsaverage mesh support (fsaverage, fsaverage5, fsaverage6)</p></li>
+<li><p>Publication-quality output (up to 2400 DPI)</p></li>
+<li><p>Vector formats (SVG, PDF, EPS) for infinite scalability</p></li>
+</ul>
+</dd>
+<dt><strong>Volumetric Rendering</strong></dt><dd><ul class="simple">
+<li><p>Orthogonal slice views (3-plane visualization)</p></li>
+<li><p>Glass brain visualization (transparent 3D)</p></li>
+<li><p>Mosaic displays (multi-slice views)</p></li>
+<li><p>ROI/parcellation overlays</p></li>
+<li><p>MNI152 template integration</p></li>
+</ul>
+</dd>
+<dt><strong>Quality &amp; Output</strong></dt><dd><ul class="simple">
+<li><p>Quality presets (draft, standard, publication, print)</p></li>
+<li><p>Multiple output formats (PNG, SVG, PDF, EPS)</p></li>
+<li><p>Configurable DPI (1-2400)</p></li>
+<li><p>Custom figure sizes</p></li>
+<li><p>Colormap support</p></li>
+</ul>
+</dd>
+<dt><strong>Template Management</strong></dt><dd><ul class="simple">
+<li><p>MNI152 templates (T1w, brain mask, GM/WM masks)</p></li>
+<li><p>TemplateFlow integration (ICBM152NLin2009cAsym)</p></li>
+<li><p>Unified template access system</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>Install BrainViz_DK:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>brainviz_dk
+</pre></div>
+</div>
+<p>Generate a quick surface plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">brainviz_dk</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_nifti</span>
+
+<span class="n">plot_nifti</span><span class="p">(</span>
+    <span class="s1">&#39;brain_map.nii.gz&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;output.png&#39;</span><span class="p">,</span>
+    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span>
+    <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span>
+    <span class="n">quality_preset</span><span class="o">=</span><span class="s1">&#39;publication&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Generate a glass brain visualization:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">brainviz_dk</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_glass_brain</span>
+
+<span class="n">plot_glass_brain</span><span class="p">(</span>
+    <span class="s1">&#39;activation_map.nii.gz&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;glass_brain.png&#39;</span><span class="p">,</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="command-line-interface">
+<h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Link to this heading"></a></h2>
+<p>BrainViz_DK provides a comprehensive CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Surface plotting with all standard views</span>
+brainviz_dk<span class="w"> </span>--in<span class="w"> </span>brain.nii.gz<span class="w"> </span>--out<span class="w"> </span>plots/<span class="w"> </span>--plot-type<span class="w"> </span>surface<span class="w"> </span>--all-views
+
+<span class="c1"># Volumetric slices</span>
+brainviz_dk<span class="w"> </span>--in<span class="w"> </span>brain.nii.gz<span class="w"> </span>--out<span class="w"> </span>slices.png<span class="w"> </span>--plot-type<span class="w"> </span>volume<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>--display-mode<span class="w"> </span>ortho<span class="w"> </span>--template<span class="w"> </span>mni152
+
+<span class="c1"># Glass brain</span>
+brainviz_dk<span class="w"> </span>--in<span class="w"> </span>brain.nii.gz<span class="w"> </span>--out<span class="w"> </span>glass.png<span class="w"> </span>--plot-type<span class="w"> </span>glass-brain<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>--dpi<span class="w"> </span><span class="m">600</span><span class="w"> </span>--colormap<span class="w"> </span>hot
+
+<span class="c1"># High-quality publication output</span>
+brainviz_dk<span class="w"> </span>--in<span class="w"> </span>brain.nii.gz<span class="w"> </span>--out<span class="w"> </span>plot.svg<span class="w"> </span>--plot-type<span class="w"> </span>surface<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>--view<span class="w"> </span>lateral<span class="w"> </span>--hemi<span class="w"> </span>left<span class="w"> </span>--quality<span class="w"> </span>publication
+</pre></div>
+</div>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-templateflow-setup">Optional: TemplateFlow Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#platform-specific-notes">Platform-Specific Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-surface-plotting">Basic Surface Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#quality-presets">Quality Presets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#volumetric-visualization">Volumetric Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#template-management">Template Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#command-line-interface">Command-Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#advanced-examples">Advanced Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-workflows">Common Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#main-options">Main Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#utility-commands">Utility Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#surface-plotting-options">Surface Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#volumetric-plotting-options">Volumetric Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#quality-output-options">Quality &amp; Output Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#style-options">Style Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#general-options">General Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#complete-examples">Complete Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#exit-codes">Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quality_presets.html">Quality Presets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#available-presets">Available Presets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#comparison-table">Comparison Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#using-presets">Using Presets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#custom-quality-settings">Custom Quality Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#choosing-the-right-preset">Choosing the Right Preset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#format-recommendations">Format Recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#advanced-tips">Advanced Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Brain Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#available-templates">Available Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-manager">Template Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#using-templates-in-plotting">Using Templates in Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-details">Template Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-resolution">Template Resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#templateflow-configuration">TemplateFlow Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-comparison">Template Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/surface_plotting.html">Surface Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#quality-settings">Quality Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#surface-types">Surface Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#colormap-examples">Colormap Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#advanced-styling">Advanced Styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#batch-processing">Batch Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#publication-workflows">Publication Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#interactive-3d">Interactive 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#complete-example-script">Complete Example Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/volumetric_plotting.html">Volumetric Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#display-modes">Display Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#glass-brain-variations">Glass Brain Variations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#mosaic-displays">Mosaic Displays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#statistical-maps">Statistical Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#roi-visualization">ROI Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#template-options">Template Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#colormaps-for-volumetric-data">Colormaps for Volumetric Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#advanced-options">Advanced Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#batch-processing">Batch Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#complete-volumetric-pipeline">Complete Volumetric Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/batch_processing.html">Batch Processing Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#basic-batch-processing">Basic Batch Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#advanced-batch-processing">Advanced Batch Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#multiple-contrasts">Multiple Contrasts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#quality-workflows">Quality Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#complete-batch-pipeline">Complete Batch Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#configuration-file-approach">Configuration File Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/quality_comparison.html">Quality Comparison Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-preset-overview">Quality Preset Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#draft-vs-standard-vs-publication">Draft vs Standard vs Publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#dpi-comparison">DPI Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#mesh-resolution-comparison">Mesh Resolution Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#format-comparison">Format Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#use-case-scenarios">Use Case Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#custom-quality-configurations">Custom Quality Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-metrics">Quality Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#decision-guide">Decision Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#trade-offs-summary">Trade-offs Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/plot.html">Surface Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.get_quality_preset"><code class="docutils literal notranslate"><span class="pre">get_quality_preset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.list_quality_presets"><code class="docutils literal notranslate"><span class="pre">list_quality_presets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.project_volume_to_surface"><code class="docutils literal notranslate"><span class="pre">project_volume_to_surface()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_nifti"><code class="docutils literal notranslate"><span class="pre">plot_nifti()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_four_views"><code class="docutils literal notranslate"><span class="pre">generate_four_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_all_standard_views"><code class="docutils literal notranslate"><span class="pre">generate_all_standard_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_3d_interactive"><code class="docutils literal notranslate"><span class="pre">plot_3d_interactive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#main-functions">Main Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#quality-presets">Quality Presets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#parameters-reference">Parameters Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/volumetric.html">Volumetric Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_volumetric_slices"><code class="docutils literal notranslate"><span class="pre">plot_volumetric_slices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_glass_brain"><code class="docutils literal notranslate"><span class="pre">plot_glass_brain()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_mosaic"><code class="docutils literal notranslate"><span class="pre">plot_mosaic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_roi_overlay"><code class="docutils literal notranslate"><span class="pre">plot_roi_overlay()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#main-functions">Main Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#parameters-reference">Parameters Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#colormap-recommendations">Colormap Recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/templates.html">Template Management API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.TemplateManager"><code class="docutils literal notranslate"><span class="pre">TemplateManager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.get_template"><code class="docutils literal notranslate"><span class="pre">get_template()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.list_available_templates"><code class="docutils literal notranslate"><span class="pre">list_available_templates()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#available-templates">Available Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#template-information-structure">Template Information Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BrainViz_DK Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

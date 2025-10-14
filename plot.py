@@ -1,6 +1,6 @@
 import os
 import logging
-from typing import Iterable, List, Optional, Tuple
+from typing import Iterable, List, Optional, Tuple, Union, Dict, Any
 
 import numpy as np
 import nibabel as nib
@@ -54,7 +54,7 @@ QUALITY_PRESETS = {
 }
 
 
-def get_quality_preset(preset_name: str) -> dict:
+def get_quality_preset(preset_name: str) -> Dict[str, Any]:
     """Get quality preset configuration.
 
     Args:
@@ -125,7 +125,7 @@ def project_volume_to_surface(
     interpolation: str = "linear",
     kind: str = "line",
     smooth_fwhm_mm: Optional[float] = None,
-):
+) -> Tuple[str, str, np.ndarray]:
     """Project a NIfTI volume to a cortical surface texture.
 
     Args:
@@ -435,10 +435,16 @@ def generate_four_views(
                     rasterize_data=rasterize_data,
                 )
                 outputs.append(result_path)
-            except Exception as e:
-                # Continue other renders even if one fails
+            except (ValueError, FileNotFoundError, OSError) as e:
+                # Specific error handling for common issues
                 logger.warning(f"Failed to render {hemi} {view}: {e}")
                 print(f"✗ Failed {hemi} {view}: {e}")
+            except Exception as e:
+                # Catch-all for unexpected errors
+                logger.error(f"Unexpected error rendering {hemi} {view}: {e}")
+                print(f"✗ Unexpected error {hemi} {view}: {e}")
+                import traceback
+                traceback.print_exc()
     return outputs
 
 

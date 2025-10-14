@@ -17,11 +17,7 @@ from brainviz_dk import (
     plot_3d_interactive,
     project_volume_to_surface,
 )
-
-
-# Test data configuration
-TEST_DATA_DIR = Path("/media/brainlab-uwo/Data2/Results/Group_level_analysis/Testing/MNI152NLin2009cAsym")
-TEST_NIFTI = TEST_DATA_DIR / "group_mean.nii.gz"
+from test_config import test_config, get_test_nifti_path, skip_if_no_test_data
 
 
 @pytest.fixture
@@ -36,9 +32,10 @@ def temp_output_dir():
 @pytest.fixture
 def test_nifti_path():
     """Provide path to test NIfTI file."""
-    if not TEST_NIFTI.exists():
-        pytest.skip(f"Test data not found: {TEST_NIFTI}")
-    return str(TEST_NIFTI)
+    nifti_path = get_test_nifti_path()
+    if nifti_path is None:
+        pytest.skip("No test data available. Set BRAINVIZ_TEST_DATA_DIR environment variable.")
+    return str(nifti_path)
 
 
 class TestProjectVolumeToSurface:
@@ -398,19 +395,21 @@ class TestMultipleNiftiFiles:
 
     def test_different_nifti_files(self, temp_output_dir):
         """Test plotting different types of group statistics."""
-        if not TEST_DATA_DIR.exists():
-            pytest.skip("Test data directory not found")
-
+        if not test_config.has_test_data():
+            pytest.skip("No test data available")
+        
+        test_data_dir = test_config.test_data_dir
+        
         # Test files with different statistical measures
         test_files = [
             "group_mean.nii.gz",
-            "group_median.nii.gz",
+            "group_median.nii.gz", 
             "group_t.nii.gz",
             "group_d.nii.gz",
         ]
 
         for filename in test_files:
-            nifti_path = TEST_DATA_DIR / filename
+            nifti_path = test_data_dir / filename
             if not nifti_path.exists():
                 continue
 

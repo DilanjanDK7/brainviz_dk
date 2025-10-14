@@ -24,6 +24,8 @@ from .volumetric import (
     plot_roi_overlay,
 )
 from .templates import list_available_templates
+from .interactive3d import plot_interactive_surface_plotly
+from .logging_config import setup_logging, ProgressLogger
 
 
 def main():
@@ -60,12 +62,24 @@ Examples:
   brainviz_dk --in brain.nii.gz --out mosaic.png --plot-type mosaic \\
               --display-mode z --n-slices 20
 
-  3D INTERACTIVE:
+  3D INTERACTIVE (nilearn-based):
   # Interactive 3D in browser
   brainviz_dk --in brain.nii.gz --out plots/ --plot-type 3d
 
   # Save to HTML
   brainviz_dk --in brain.nii.gz --out brain.html --plot-type 3d
+
+  PLOTLY 3D INTERACTIVE (Rotatable, High-Quality):
+  # Interactive Plotly 3D with both hemispheres (default: fsaverage5, 1mm spacing)
+  brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d
+
+  # Single hemisphere with ICBM152 template
+  brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \\
+              --hemi left --plotly-template MNI152NLin2009cAsym
+
+  # Custom mesh and transparency
+  brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \\
+              --plotly-mesh fsaverage --opacity 0.8
 
   UTILITIES:
   # List quality presets
@@ -220,6 +234,10 @@ Examples:
 
     args = parser.parse_args()
 
+    # Set up logging
+    logger = setup_logging(verbose=args.verbose, quiet=getattr(args, 'quiet', False))
+    progress = ProgressLogger(verbose=args.verbose)
+
     # Handle utility commands
     if args.list_presets:
         list_quality_presets()
@@ -238,14 +256,13 @@ Examples:
 
     # Validate input file exists
     if not os.path.exists(args.nifti_path):
-        print(f"❌ Error: Input file not found: {args.nifti_path}", file=sys.stderr)
+        progress.error(f"Input file not found: {args.nifti_path}")
         return 1
 
     # Parse quality preset if provided
     plot_kwargs = {}
     if args.quality_preset:
-        if args.verbose:
-            print(f"Using quality preset: {args.quality_preset}")
+        logger.info(f"Using quality preset: {args.quality_preset}")
         plot_kwargs.update(get_quality_preset(args.quality_preset))
 
     # Override with explicit arguments
@@ -258,7 +275,7 @@ Examples:
             w, h = map(float, args.figsize.split(','))
             plot_kwargs['figsize'] = (w, h)
         except ValueError:
-            print(f"❌ Error: Invalid figsize format. Use 'width,height' (e.g., '10,8')", file=sys.stderr)
+            progress.error("Invalid figsize format. Use 'width,height' (e.g., '10,8')")
             return 1
     if args.threshold:
         plot_kwargs['threshold'] = args.threshold
@@ -292,8 +309,17 @@ Examples:
 
         return exit_code
 
+    except (FileNotFoundError, ValueError, OSError) as e:
+        progress.error(str(e))
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        return 1
+    except KeyboardInterrupt:
+        progress.warning("Operation cancelled by user")
+        return 1
     except Exception as e:
-        print(f"❌ Error: {e}", file=sys.stderr)
+        progress.error(f"Unexpected error: {e}")
         if args.verbose:
             import traceback
             traceback.print_exc()
@@ -302,6 +328,9 @@ Examples:
 
 def handle_surface_plotting(args, plot_kwargs):
     """Handle surface plotting commands."""
+    from .logging_config import get_logger
+    logger = get_logger()
+    
     # Map hemisphere arguments
     hemis_map = {
         "both": ("lh", "rh"),
@@ -315,8 +344,7 @@ def handle_surface_plotting(args, plot_kwargs):
     # Determine what to plot
     if args.all_views:
         # Generate all standard views
-        if args.verbose:
-            print("Generating all standard neuroimaging views...")
+        logger.info("Generating all standard neuroimaging views...")
 
         outputs = generate_all_standard_views(
             args.nifti_path,
@@ -335,8 +363,7 @@ def handle_surface_plotting(args, plot_kwargs):
     elif args.views:
         # Generate custom views
         views = tuple(v.strip() for v in args.views.split(",") if v.strip())
-        if args.verbose:
-            print(f"Generating views: {', '.join(views)}")
+        logger.info(f"Generating views: {', '.join(views)}")
 
         outputs = generate_four_views(
             args.nifti_path,
@@ -356,8 +383,7 @@ def handle_surface_plotting(args, plot_kwargs):
 
     elif args.view:
         # Single view plot
-        if args.verbose:
-            print(f"Generating single view: {args.view} ({args.hemi})")
+        logger.info(f"Generating single view: {args.view} ({args.hemi})")
 
         # For single view, need to specify hemisphere
         if args.hemi == "both":
@@ -381,8 +407,7 @@ def handle_surface_plotting(args, plot_kwargs):
 
     else:
         # Default: generate standard 4 views
-        if args.verbose:
-            print("Generating default views (lateral, medial, dorsal, ventral)...")
+        logger.info("Generating default views (lateral, medial, dorsal, ventral)...")
 
         outputs = generate_four_views(
             args.nifti_path,

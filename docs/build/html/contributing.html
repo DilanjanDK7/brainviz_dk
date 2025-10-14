@@ -1,0 +1,1203 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing &mdash; BrainViz_DK 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Template Management API" href="api/templates.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BrainViz_DK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-pypi-recommended">From PyPI (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-source">From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#development-installation">Development Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-templateflow-setup">Optional: TemplateFlow Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#missing-dependencies">Missing Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#template-download-issues">Template Download Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#memory-issues">Memory Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#platform-specific-notes">Platform-Specific Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-surface-plotting">Basic Surface Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#single-view">Single View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#multiple-views">Multiple Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#all-standard-views">All Standard Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#quality-presets">Quality Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#draft-fast-preview">Draft (Fast Preview)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#publication-quality">Publication Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#list-available-presets">List Available Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#volumetric-visualization">Volumetric Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#orthogonal-slices">Orthogonal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#mosaic-view">Mosaic View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#template-management">Template Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#list-available-templates">List Available Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#load-a-template">Load a Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#command-line-interface">Command-Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#volumetric-plots">Volumetric Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#quality-control">Quality Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#utility-commands">Utility Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#custom-figure-size">Custom Figure Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#threshold-and-colormap">Threshold and Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#batch-processing-multiple-files">Batch Processing Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#roi-overlay">ROI Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-1-quality-check">Workflow 1: Quality Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-2-publication-figure">Workflow 2: Publication Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#workflow-3-group-analysis-report">Workflow 3: Group Analysis Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#main-options">Main Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#utility-commands">Utility Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#surface-plotting-options">Surface Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#volumetric-plotting-options">Volumetric Plotting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#quality-output-options">Quality &amp; Output Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#style-options">Style Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#general-options">General Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#complete-examples">Complete Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#surface-plotting">Surface Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#volumetric-plotting">Volumetric Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#d-interactive">3D Interactive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#roi-overlay">ROI Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#custom-quality-settings">Custom Quality Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#thresholded-statistical-map">Thresholded Statistical Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#large-custom-figure">Large Custom Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli_usage.html#batch-processing-script">Batch Processing Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#exit-codes">Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_usage.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quality_presets.html">Quality Presets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#available-presets">Available Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#draft">draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#standard">standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#publication">publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#print">print</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#comparison-table">Comparison Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#using-presets">Using Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#python-api">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#command-line-interface">Command-Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#custom-quality-settings">Custom Quality Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#id1">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#id2">Command-Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#choosing-the-right-preset">Choosing the Right Preset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#decision-flowchart">Decision Flowchart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#by-use-case">By Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#performance-considerations">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#processing-time">Processing Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#disk-space">Disk Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#memory-usage">Memory Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#format-recommendations">Format Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#png-raster">PNG (Raster)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#svg-vector">SVG (Vector)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#pdf-vector">PDF (Vector)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#eps-vector">EPS (Vector)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#advanced-tips">Advanced Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#optimizing-for-specific-journals">Optimizing for Specific Journals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quality_presets.html#batch-processing-with-presets">Batch Processing with Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quality_presets.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Brain Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#available-templates">Available Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152-nilearn">MNI152 (nilearn)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152nlin2009casym-templateflow">MNI152NLin2009cAsym (TemplateFlow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#fsaverage-nilearn">fsaverage (nilearn)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-manager">Template Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#list-available-templates">List Available Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#loading-templates">Loading Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#using-templates-in-plotting">Using Templates in Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#volumetric-slices">Volumetric Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mosaic">Mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#command-line-usage">Command-Line Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-details">Template Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152-template">MNI152 Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#mni152nlin2009casym-template">MNI152NLin2009cAsym Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-resolution">Template Resolution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#choosing-resolution">Choosing Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#custom-template-path">Custom Template Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-metadata">Template Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#templateflow-configuration">TemplateFlow Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#set-custom-cache-directory">Set Custom Cache Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#manual-template-download">Manual Template Download</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-not-found">Template Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#template-download-fails">Template Download Fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#memory-issues-with-high-resolution-templates">Memory Issues with High-Resolution Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#template-comparison">Template Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/surface_plotting.html">Surface Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#single-hemisphere-single-view">Single Hemisphere, Single View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#both-hemispheres">Both Hemispheres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#all-standard-views">All Standard Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#quality-settings">Quality Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#draft-quality-fast-preview">Draft Quality (Fast Preview)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#publication-quality">Publication Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-quality">Custom Quality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#surface-types">Surface Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#pial-surface-default">Pial Surface (Default)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#inflated-surface">Inflated Surface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#white-matter-surface">White Matter Surface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#colormap-examples">Colormap Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#hot-colormap">Hot Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#coolwarm-colormap">Coolwarm Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-colormaps">Custom Colormaps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#advanced-styling">Advanced Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-alpha-and-darkness">Custom Alpha and Darkness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-radius">Custom Radius</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#with-smoothing">With Smoothing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#batch-processing">Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#process-multiple-files">Process Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#generate-all-views-for-multiple-files">Generate All Views for Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#custom-view-combinations">Custom View Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#publication-workflows">Publication Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#single-figure-for-paper">Single Figure for Paper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#multi-panel-figure">Multi-Panel Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#supplementary-materials">Supplementary Materials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#interactive-3d">Interactive 3D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#generate-interactive-html">Generate Interactive HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#with-custom-threshold">With Custom Threshold</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#complete-example-script">Complete Example Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/surface_plotting.html#full-analysis-pipeline">Full Analysis Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/surface_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/volumetric_plotting.html">Volumetric Plotting Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#orthogonal-slices-3-plane-view">Orthogonal Slices (3-Plane View)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#mosaic-view">Mosaic View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#display-modes">Display Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#axial-slices">Axial Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#sagittal-slices">Sagittal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coronal-slices">Coronal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#two-plane-combinations">Two-Plane Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#glass-brain-variations">Glass Brain Variations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#standard-glass-brain">Standard Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#black-background">Black Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#single-plane-glass-brain">Single Plane Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#left-right-hemisphere-glass-brain">Left/Right Hemisphere Glass Brain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#mosaic-displays">Mosaic Displays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#axial-mosaic-20-slices">Axial Mosaic (20 Slices)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#sagittal-mosaic">Sagittal Mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coronal-mosaic">Coronal Mosaic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#statistical-maps">Statistical Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#t-statistic-map-with-threshold">T-Statistic Map with Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#positive-activations-only">Positive Activations Only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#correlation-map">Correlation Map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#roi-visualization">ROI Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#roi-overlay">ROI Overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#parcellation-atlas">Parcellation Atlas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#template-options">Template Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#default-mni152">Default MNI152</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#fmriprep-template-icbm152">fMRIPrep Template (ICBM152)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#colormaps-for-volumetric-data">Colormaps for Volumetric Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#hot-classic">Hot (Classic)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#coolwarm-diverging">Coolwarm (Diverging)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#viridis-perceptually-uniform">Viridis (Perceptually Uniform)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#plasma">Plasma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#cold-hot-diverging">Cold-Hot (Diverging)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#advanced-options">Advanced Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-slice-coordinates">Custom Slice Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#without-annotations">Without Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-figure-size">Custom Figure Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#custom-title">Custom Title</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#batch-processing">Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#process-multiple-files">Process Multiple Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/volumetric_plotting.html#multiple-display-modes">Multiple Display Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#complete-volumetric-pipeline">Complete Volumetric Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/volumetric_plotting.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/batch_processing.html">Batch Processing Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#basic-batch-processing">Basic Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#process-multiple-nifti-files">Process Multiple NIfTI Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multiple-subjects">Multiple Subjects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multiple-views-per-subject">Multiple Views Per Subject</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#advanced-batch-processing">Advanced Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#with-progress-tracking">With Progress Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#parallel-processing">Parallel Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#with-error-handling">With Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#multiple-contrasts">Multiple Contrasts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#process-different-statistical-maps">Process Different Statistical Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#group-level-analysis">Group-Level Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#quality-workflows">Quality Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#draft-standard-publication">Draft → Standard → Publication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#multi-format-export">Multi-Format Export</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#complete-batch-pipeline">Complete Batch Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#full-analysis-script">Full Analysis Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#configuration-file-approach">Configuration File Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#using-config-file">Using Config File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#performance-tips">Performance Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#memory-efficient-batch-processing">Memory-Efficient Batch Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/batch_processing.html#optimize-for-speed">Optimize for Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/batch_processing.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/quality_comparison.html">Quality Comparison Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-preset-overview">Quality Preset Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#generate-all-quality-levels">Generate All Quality Levels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#draft-vs-standard-vs-publication">Draft vs Standard vs Publication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#side-by-side-comparison">Side-by-Side Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#dpi-comparison">DPI Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#different-dpi-settings">Different DPI Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#dpi-impact-on-file-size">DPI Impact on File Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#mesh-resolution-comparison">Mesh Resolution Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#fsaverage5-vs-fsaverage">fsaverage5 vs fsaverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#format-comparison">Format Comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#png-vs-svg-vs-pdf">PNG vs SVG vs PDF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#use-case-scenarios">Use Case Scenarios</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-1-quick-quality-check">Scenario 1: Quick Quality Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-2-lab-meeting-presentation">Scenario 2: Lab Meeting Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-3-journal-manuscript">Scenario 3: Journal Manuscript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#scenario-4-conference-poster">Scenario 4: Conference Poster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#custom-quality-configurations">Custom Quality Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#optimized-for-web">Optimized for Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#optimized-for-print">Optimized for Print</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#balanced-quality-speed">Balanced Quality/Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#quality-metrics">Quality Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quality_comparison.html#complete-quality-benchmark">Complete Quality Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#decision-guide">Decision Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#trade-offs-summary">Trade-offs Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quality_comparison.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/plot.html">Surface Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.get_quality_preset"><code class="docutils literal notranslate"><span class="pre">get_quality_preset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.list_quality_presets"><code class="docutils literal notranslate"><span class="pre">list_quality_presets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.project_volume_to_surface"><code class="docutils literal notranslate"><span class="pre">project_volume_to_surface()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_nifti"><code class="docutils literal notranslate"><span class="pre">plot_nifti()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_four_views"><code class="docutils literal notranslate"><span class="pre">generate_four_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.generate_all_standard_views"><code class="docutils literal notranslate"><span class="pre">generate_all_standard_views()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#plot.plot_3d_interactive"><code class="docutils literal notranslate"><span class="pre">plot_3d_interactive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#main-functions">Main Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#plot-nifti">plot_nifti</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id0"><code class="docutils literal notranslate"><span class="pre">plot_nifti()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#generate-four-views">generate_four_views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id1"><code class="docutils literal notranslate"><span class="pre">generate_four_views()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#generate-all-standard-views">generate_all_standard_views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id2"><code class="docutils literal notranslate"><span class="pre">generate_all_standard_views()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#plot-3d-interactive">plot_3d_interactive</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id3"><code class="docutils literal notranslate"><span class="pre">plot_3d_interactive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#quality-presets">Quality Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#get-quality-preset">get_quality_preset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id4"><code class="docutils literal notranslate"><span class="pre">get_quality_preset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#list-quality-presets">list_quality_presets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id5"><code class="docutils literal notranslate"><span class="pre">list_quality_presets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#id6">QUALITY_PRESETS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#plot.QUALITY_PRESETS"><code class="docutils literal notranslate"><span class="pre">QUALITY_PRESETS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#utility-functions">Utility Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#project-volume-to-surface">project_volume_to_surface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/plot.html#id9"><code class="docutils literal notranslate"><span class="pre">project_volume_to_surface()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#parameters-reference">Parameters Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#common-parameters">Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#view-angles">View Angles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#surface-types">Surface Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#mesh-resolutions">Mesh Resolutions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#basic-surface-plot">Basic Surface Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#high-resolution-publication-figure">High-Resolution Publication Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#multiple-views">Multiple Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#custom-styling">Custom Styling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/plot.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/plot.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/volumetric.html">Volumetric Plotting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_volumetric_slices"><code class="docutils literal notranslate"><span class="pre">plot_volumetric_slices()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_glass_brain"><code class="docutils literal notranslate"><span class="pre">plot_glass_brain()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_mosaic"><code class="docutils literal notranslate"><span class="pre">plot_mosaic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#volumetric.plot_roi_overlay"><code class="docutils literal notranslate"><span class="pre">plot_roi_overlay()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#main-functions">Main Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-volumetric-slices">plot_volumetric_slices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id0"><code class="docutils literal notranslate"><span class="pre">plot_volumetric_slices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-glass-brain">plot_glass_brain</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id1"><code class="docutils literal notranslate"><span class="pre">plot_glass_brain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-mosaic">plot_mosaic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id2"><code class="docutils literal notranslate"><span class="pre">plot_mosaic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#plot-roi-overlay">plot_roi_overlay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/volumetric.html#id3"><code class="docutils literal notranslate"><span class="pre">plot_roi_overlay()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#parameters-reference">Parameters Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#common-parameters">Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#display-modes">Display Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#orthogonal-slices">Orthogonal Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#glass-brain">Glass Brain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#axial-slices">Axial Slices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#mosaic-view">Mosaic View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#thresholded-statistical-map">Thresholded Statistical Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#roi-overlay">ROI Overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#custom-colormap">Custom Colormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#sagittal-slices-with-annotations">Sagittal Slices with Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#batch-glass-brain-generation">Batch Glass Brain Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#specific-slice-coordinates">Specific Slice Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#custom-value-range">Custom Value Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#large-figure-size">Large Figure Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#colormap-recommendations">Colormap Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-activation-maps">For Activation Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-statistical-maps">For Statistical Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/volumetric.html#for-roi-parcellations">For ROI/Parcellations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/volumetric.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/templates.html">Template Management API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.TemplateManager"><code class="docutils literal notranslate"><span class="pre">TemplateManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.TEMPLATES"><code class="docutils literal notranslate"><span class="pre">TemplateManager.TEMPLATES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.__init__"><code class="docutils literal notranslate"><span class="pre">TemplateManager.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.list_templates"><code class="docutils literal notranslate"><span class="pre">TemplateManager.list_templates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_template"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_template()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_template_path"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_template_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templates.TemplateManager.get_surface_mesh"><code class="docutils literal notranslate"><span class="pre">TemplateManager.get_surface_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.get_template"><code class="docutils literal notranslate"><span class="pre">get_template()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#templates.list_available_templates"><code class="docutils literal notranslate"><span class="pre">list_available_templates()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templatemanager">TemplateManager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id0"><code class="docutils literal notranslate"><span class="pre">TemplateManager</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#get-template">get_template</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id7"><code class="docutils literal notranslate"><span class="pre">get_template()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#list-available-templates">list_available_templates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/templates.html#id8"><code class="docutils literal notranslate"><span class="pre">list_available_templates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#available-templates">Available Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#nilearn-templates">nilearn Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templateflow-templates">TemplateFlow Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#template-information-structure">Template Information Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#basic-template-loading">Basic Template Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#using-with-plotting-functions">Using with Plotting Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#loading-templateflow-templates">Loading TemplateFlow Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#getting-template-information">Getting Template Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#checking-template-availability">Checking Template Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#loading-multiple-templates">Loading Multiple Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#custom-template-cache">Custom Template Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#direct-templateflow-access">Direct TemplateFlow Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#template-comparison">Template Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#error-handling">Error Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#template-not-found">Template Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#templateflow-not-installed">TemplateFlow Not Installed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/templates.html#invalid-resolution">Invalid Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/templates.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fork-and-clone">Fork and Clone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-setup">Development Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-branch">1. Create a Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-changes">2. Make Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-tests">3. Run Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-documentation">4. Build Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commit-changes">5. Commit Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#push-and-create-pr">6. Push and Create PR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#code-style">Code Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-style">Python Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-structure">Test Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-tests">Writing Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-specific-tests">Running Specific Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-docs">Building Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-documentation">Adding Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-documentation-section">Example Documentation Section</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request-guidelines">Pull Request Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-submitting">Before Submitting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pr-description">PR Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#review-process">Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#code-review-checklist">Code Review Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-reviewers">For Reviewers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-contributors">For Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-tips">Development Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-tests">Debugging Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-with-real-data">Testing with Real Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-profiling">Performance Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#questions">Questions?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">[0.1.0] - 2025-10-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#unreleased">[Unreleased]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-history">Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#contributing">Contributing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BrainViz_DK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
+<p>We welcome contributions to BrainViz_DK! This guide will help you get started.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<section id="fork-and-clone">
+<h3>Fork and Clone<a class="headerlink" href="#fork-and-clone" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Fork the repository on GitHub</p></li>
+<li><p>Clone your fork locally:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/brainviz_dk.git
+<span class="nb">cd</span><span class="w"> </span>brainviz_dk
+</pre></div>
+</div>
+</section>
+<section id="development-setup">
+<h3>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading"></a></h3>
+<p>Install in development mode with all dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</pre></div>
+</div>
+<p>This installs:</p>
+<ul class="simple">
+<li><p>pytest (testing)</p></li>
+<li><p>pytest-cov (coverage)</p></li>
+<li><p>sphinx (documentation)</p></li>
+<li><p>sphinx_rtd_theme (documentation theme)</p></li>
+<li><p>templateflow (optional templates)</p></li>
+</ul>
+</section>
+</section>
+<section id="development-workflow">
+<h2>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h2>
+<section id="create-a-branch">
+<h3>1. Create a Branch<a class="headerlink" href="#create-a-branch" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/your-feature-name
+</pre></div>
+</div>
+</section>
+<section id="make-changes">
+<h3>2. Make Changes<a class="headerlink" href="#make-changes" title="Link to this heading"></a></h3>
+<p>Edit the code and add tests for new functionality.</p>
+</section>
+<section id="run-tests">
+<h3>3. Run Tests<a class="headerlink" href="#run-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>Run with coverage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/<span class="w"> </span>--cov<span class="o">=</span>brainviz_dk<span class="w"> </span>--cov-report<span class="o">=</span>html
+</pre></div>
+</div>
+</section>
+<section id="build-documentation">
+<h3>4. Build Documentation<a class="headerlink" href="#build-documentation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>View documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># macOS</span>
+xdg-open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># Linux</span>
+</pre></div>
+</div>
+</section>
+<section id="commit-changes">
+<h3>5. Commit Changes<a class="headerlink" href="#commit-changes" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add: descriptive commit message&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="push-and-create-pr">
+<h3>6. Push and Create PR<a class="headerlink" href="#push-and-create-pr" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/your-feature-name
+</pre></div>
+</div>
+<p>Then create a Pull Request on GitHub.</p>
+</section>
+</section>
+<section id="code-style">
+<h2>Code Style<a class="headerlink" href="#code-style" title="Link to this heading"></a></h2>
+<section id="python-style">
+<h3>Python Style<a class="headerlink" href="#python-style" title="Link to this heading"></a></h3>
+<p>Follow PEP 8 guidelines:</p>
+<ul class="simple">
+<li><p>4 spaces for indentation</p></li>
+<li><p>79 characters per line for code</p></li>
+<li><p>72 characters for docstrings</p></li>
+<li><p>Use descriptive variable names</p></li>
+</ul>
+</section>
+<section id="docstring-format">
+<h3>Docstring Format<a class="headerlink" href="#docstring-format" title="Link to this heading"></a></h3>
+<p>Use Google-style docstrings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_example</span><span class="p">(</span><span class="n">nifti_path</span><span class="p">,</span> <span class="n">out_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a brain visualization.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nifti_path (str): Path to input NIfTI file.</span>
+<span class="sd">        out_path (str): Output file path.</span>
+<span class="sd">        dpi (int, optional): Output resolution. Defaults to 300.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Path to output file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If input file doesn&#39;t exist.</span>
+<span class="sd">        ValueError: If dpi is out of range.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; plot_example(&#39;brain.nii.gz&#39;, &#39;output.png&#39;, dpi=600)</span>
+<span class="sd">        &#39;output.png&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<section id="test-structure">
+<h3>Test Structure<a class="headerlink" href="#test-structure" title="Link to this heading"></a></h3>
+<p>Tests are in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tests/
+├── test_plot.py          # Surface plotting tests
+├── test_volumetric.py    # Volumetric plotting tests
+├── test_templates.py     # Template management tests
+└── conftest.py           # Pytest configuration
+</pre></div>
+</div>
+</section>
+<section id="writing-tests">
+<h3>Writing Tests<a class="headerlink" href="#writing-tests" title="Link to this heading"></a></h3>
+<p>Use pytest fixtures and parametrize:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brainviz_dk</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_nifti</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_nifti</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a sample NIfTI file.&quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">nibabel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nib</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">nifti_path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&quot;sample.nii.gz&quot;</span>
+    <span class="n">nib</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">nifti_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">nifti_path</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_plot_nifti_basic</span><span class="p">(</span><span class="n">sample_nifti</span><span class="p">,</span> <span class="n">tmp_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test basic surface plotting.&quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&quot;output.png&quot;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">plot_nifti</span><span class="p">(</span>
+        <span class="n">sample_nifti</span><span class="p">,</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+        <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span>
+        <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">output</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span> <span class="s1">&#39;medial&#39;</span><span class="p">,</span> <span class="s1">&#39;dorsal&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_plot_multiple_views</span><span class="p">(</span><span class="n">sample_nifti</span><span class="p">,</span> <span class="n">tmp_path</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test multiple views.&quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">.png&quot;</span>
+    <span class="n">plot_nifti</span><span class="p">(</span><span class="n">sample_nifti</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">output</span><span class="p">),</span> <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">output</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="running-specific-tests">
+<h3>Running Specific Tests<a class="headerlink" href="#running-specific-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run single test file</span>
+pytest<span class="w"> </span>tests/test_plot.py<span class="w"> </span>-v
+
+<span class="c1"># Run single test</span>
+pytest<span class="w"> </span>tests/test_plot.py::test_plot_nifti_basic<span class="w"> </span>-v
+
+<span class="c1"># Run tests matching pattern</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;plot&quot;</span><span class="w"> </span>-v
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<section id="building-docs">
+<h3>Building Docs<a class="headerlink" href="#building-docs" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>Documentation uses Sphinx with ReadTheDocs theme.</p>
+</section>
+<section id="adding-documentation">
+<h3>Adding Documentation<a class="headerlink" href="#adding-documentation" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Add docstrings to all public functions</p></li>
+<li><p>Create/update RST files in <code class="docutils literal notranslate"><span class="pre">docs/source/</span></code></p></li>
+<li><p>Add examples to function docstrings</p></li>
+<li><p>Update API reference if needed</p></li>
+</ol>
+</section>
+<section id="example-documentation-section">
+<h3>Example Documentation Section<a class="headerlink" href="#example-documentation-section" title="Link to this heading"></a></h3>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">New Feature</span>
+<span class="gh">-----------</span>
+
+Description of the new feature.
+
+<span class="gs">**Example:**</span>
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+   <span class="kn">from</span><span class="w"> </span><span class="nn">brainviz_dk</span><span class="w"> </span><span class="kn">import</span> <span class="n">new_feature</span>
+
+   <span class="n">result</span> <span class="o">=</span> <span class="n">new_feature</span><span class="p">(</span><span class="s1">&#39;input.nii.gz&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+
+<span class="gs">**Parameters:**</span>
+
+<span class="m">-</span> param1 (type): Description
+<span class="m">-</span> param2 (type): Description
+
+<span class="gs">**Returns:**</span>
+
+<span class="m">-</span> return_value (type): Description
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pull-request-guidelines">
+<h2>Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Link to this heading"></a></h2>
+<section id="before-submitting">
+<h3>Before Submitting<a class="headerlink" href="#before-submitting" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>✅ All tests pass</p></li>
+<li><p>✅ Code follows style guidelines</p></li>
+<li><p>✅ New features have tests</p></li>
+<li><p>✅ Documentation is updated</p></li>
+<li><p>✅ Commit messages are descriptive</p></li>
+</ol>
+</section>
+<section id="pr-description">
+<h3>PR Description<a class="headerlink" href="#pr-description" title="Link to this heading"></a></h3>
+<p>Include in your PR description:</p>
+<ol class="arabic simple">
+<li><p><strong>Purpose</strong>: What does this PR do?</p></li>
+<li><p><strong>Changes</strong>: What files/functions changed?</p></li>
+<li><p><strong>Testing</strong>: How was it tested?</p></li>
+<li><p><strong>Breaking Changes</strong>: Any API changes?</p></li>
+</ol>
+<p>Example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>### Purpose
+Add support for custom colormaps in glass brain plots
+
+### Changes
+- Modified `plot_glass_brain()` to accept custom colormap parameter
+- Added colormap validation
+- Updated documentation
+
+### Testing
+- Added unit tests for colormap validation
+- Tested with 5 different colormaps
+- All existing tests pass
+
+### Breaking Changes
+None
+</pre></div>
+</div>
+</section>
+<section id="review-process">
+<h3>Review Process<a class="headerlink" href="#review-process" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Automated tests run on GitHub Actions</p></li>
+<li><p>Maintainers review code</p></li>
+<li><p>Address feedback</p></li>
+<li><p>Once approved, PR is merged</p></li>
+</ol>
+</section>
+</section>
+<section id="types-of-contributions">
+<h2>Types of Contributions<a class="headerlink" href="#types-of-contributions" title="Link to this heading"></a></h2>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<p>Found a bug? Please:</p>
+<ol class="arabic simple">
+<li><p>Check if it’s already reported in Issues</p></li>
+<li><p>Create a new issue with:
+- Description of the bug
+- Steps to reproduce
+- Expected vs. actual behavior
+- System information</p></li>
+<li><p>Submit a PR with fix and test</p></li>
+</ol>
+</section>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<p>Want to add a feature?</p>
+<ol class="arabic simple">
+<li><p>Open an issue to discuss the feature</p></li>
+<li><p>Wait for maintainer feedback</p></li>
+<li><p>Implement with tests and documentation</p></li>
+<li><p>Submit PR</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Documentation<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Documentation improvements are always welcome:</p>
+<ul class="simple">
+<li><p>Fix typos</p></li>
+<li><p>Add examples</p></li>
+<li><p>Clarify explanations</p></li>
+<li><p>Add tutorials</p></li>
+</ul>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<p>Add example scripts to <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Example: Generate publication-quality figures</span>
+<span class="sd">============================================</span>
+
+<span class="sd">This example shows how to create high-quality figures.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">brainviz_dk</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_nifti</span><span class="p">,</span> <span class="n">get_quality_preset</span>
+
+<span class="c1"># Generate publication figure</span>
+<span class="n">plot_nifti</span><span class="p">(</span>
+    <span class="s1">&#39;activation.nii.gz&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;figure1.svg&#39;</span><span class="p">,</span>
+    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span>
+    <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">get_quality_preset</span><span class="p">(</span><span class="s1">&#39;publication&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="code-review-checklist">
+<h2>Code Review Checklist<a class="headerlink" href="#code-review-checklist" title="Link to this heading"></a></h2>
+<section id="for-reviewers">
+<h3>For Reviewers<a class="headerlink" href="#for-reviewers" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Code is readable and well-documented</p></li>
+<li><p>[ ] Tests cover new functionality</p></li>
+<li><p>[ ] No breaking changes without discussion</p></li>
+<li><p>[ ] Documentation is updated</p></li>
+<li><p>[ ] Examples are provided for new features</p></li>
+<li><p>[ ] Performance impact is acceptable</p></li>
+</ul>
+</section>
+<section id="for-contributors">
+<h3>For Contributors<a class="headerlink" href="#for-contributors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] All tests pass locally</p></li>
+<li><p>[ ] Documentation builds without errors</p></li>
+<li><p>[ ] Code follows project style</p></li>
+<li><p>[ ] Commit messages are descriptive</p></li>
+<li><p>[ ] PR description is complete</p></li>
+</ul>
+</section>
+</section>
+<section id="development-tips">
+<h2>Development Tips<a class="headerlink" href="#development-tips" title="Link to this heading"></a></h2>
+<section id="debugging-tests">
+<h3>Debugging Tests<a class="headerlink" href="#debugging-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run tests with print statements visible</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>-v<span class="w"> </span>-s
+
+<span class="c1"># Drop into debugger on failure</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>--pdb
+
+<span class="c1"># Run specific test with debugging</span>
+pytest<span class="w"> </span>tests/test_plot.py::test_name<span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>--pdb
+</pre></div>
+</div>
+</section>
+<section id="testing-with-real-data">
+<h3>Testing with Real Data<a class="headerlink" href="#testing-with-real-data" title="Link to this heading"></a></h3>
+<p>Use the sample data for testing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use test data</span>
+<span class="n">SAMPLE_DATA</span> <span class="o">=</span> <span class="s1">&#39;/path/to/sample/data.nii.gz&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_with_real_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test with actual neuroimaging data.&quot;&quot;&quot;</span>
+    <span class="n">plot_nifti</span><span class="p">(</span><span class="n">SAMPLE_DATA</span><span class="p">,</span> <span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-profiling">
+<h3>Performance Profiling<a class="headerlink" href="#performance-profiling" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cProfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pstats</span>
+
+<span class="n">profiler</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+<span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+
+<span class="c1"># Your code here</span>
+<span class="n">plot_nifti</span><span class="p">(</span><span class="s1">&#39;brain.nii.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">)</span>
+
+<span class="n">profiler</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">profiler</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s1">&#39;cumulative&#39;</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="questions">
+<h2>Questions?<a class="headerlink" href="#questions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>General questions</strong>: Open a GitHub Discussion</p></li>
+<li><p><strong>Bug reports</strong>: Open a GitHub Issue</p></li>
+<li><p><strong>Feature requests</strong>: Open a GitHub Issue</p></li>
+<li><p><strong>Security issues</strong>: Email maintainers directly</p></li>
+</ul>
+<p>Thank you for contributing to BrainViz_DK!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api/templates.html" class="btn btn-neutral float-left" title="Template Management API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BrainViz_DK Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
