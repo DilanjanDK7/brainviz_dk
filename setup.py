@@ -60,6 +60,17 @@ setup(
         "templates": [
             "templateflow>=0.8.0",
         ],
+        "interactive": [
+            "plotly>=5.0.0",
+        ],
+        "imaging": [
+            "Pillow>=8.0.0",
+        ],
+        "all": [
+            "templateflow>=0.8.0",
+            "plotly>=5.0.0",
+            "Pillow>=8.0.0",
+        ],
     },
     entry_points={
         "console_scripts": [

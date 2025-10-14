@@ -34,6 +34,7 @@ from .templates import (
 
 from .interactive3d import (
     plot_interactive_surface_plotly,
+    PARCELLATION_SCHEMES,
 )
 
 __all__ = [
@@ -45,6 +46,7 @@ __all__ = [
     "project_volume_to_surface",
     # Interactive 3D
     "plot_interactive_surface_plotly",
+    "PARCELLATION_SCHEMES",
     # Quality presets
     "get_quality_preset",
     "list_quality_presets",

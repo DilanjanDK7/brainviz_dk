@@ -17,7 +17,7 @@ Key Features:
 
 import os
 import logging
-from typing import Optional, Tuple, Dict, Any, Union
+from typing import Optional, Tuple, Dict, Any, Union, List
 import numpy as np
 import nibabel as nib
 from nilearn import datasets as nilearn_datasets
@@ -31,6 +31,30 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+# Available parcellation schemes
+PARCELLATION_SCHEMES = {
+    'yeo-7-thin': {
+        'name': 'Yeo 2011 7 Networks (Thin)',
+        'n_networks': 7,
+        'thickness': 'thin',
+    },
+    'yeo-7-thick': {
+        'name': 'Yeo 2011 7 Networks (Thick)',
+        'n_networks': 7,
+        'thickness': 'thick',
+    },
+    'yeo-17-thin': {
+        'name': 'Yeo 2011 17 Networks (Thin)',
+        'n_networks': 17,
+        'thickness': 'thin',
+    },
+    'yeo-17-thick': {
+        'name': 'Yeo 2011 17 Networks (Thick)',
+        'n_networks': 17,
+        'thickness': 'thick',
+    },
+}
+
 
 def _check_plotly():
     """Check if plotly is installed."""
@@ -39,6 +63,127 @@ def _check_plotly():
             "Plotly is required for interactive 3D visualization. "
             "Install with: pip install plotly"
         )
+
+
+def _load_parcellation(parcellation: str, surf_mesh: str) -> np.ndarray:
+    """
+    Load and project parcellation to surface.
+
+    Args:
+        parcellation: Parcellation scheme (e.g., 'yeo-7-thick', 'yeo-17-thin')
+        surf_mesh: Surface mesh file path for projection
+
+    Returns:
+        Array of network labels for each vertex
+    """
+    if parcellation not in PARCELLATION_SCHEMES:
+        raise ValueError(
+            f"Unknown parcellation '{parcellation}'. "
+            f"Available: {list(PARCELLATION_SCHEMES.keys())}"
+        )
+
+    scheme = PARCELLATION_SCHEMES[parcellation]
+    logger.info(f"Loading {scheme['name']}...")
+
+    # Fetch Yeo atlas
+    yeo = nilearn_datasets.fetch_atlas_yeo_2011()
+
+    # Select appropriate volume based on parameters
+    if scheme['n_networks'] == 7:
+        vol_file = yeo[f"{scheme['thickness']}_7"]
+    else:
+        vol_file = yeo[f"{scheme['thickness']}_17"]
+
+    # Load volumetric parcellation
+    parc_img = nib.load(vol_file)
+
+    # Project to surface using nearest neighbor interpolation
+    parc_surf = surface.vol_to_surf(
+        parc_img,
+        surf_mesh,
+        radius=3.0,  # Larger radius for parcellations
+        interpolation='nearest',  # Use nearest to preserve integer labels
+    )
+
+    logger.info(f"Projected parcellation to surface: {len(np.unique(parc_surf[parc_surf > 0]))} networks")
+    return parc_surf
+
+
+def _find_network_boundaries(faces: np.ndarray, network_labels: np.ndarray) -> List[Tuple[int, int]]:
+    """
+    Find edges at network boundaries.
+
+    Args:
+        faces: Array of triangle faces (N, 3)
+        network_labels: Network label for each vertex
+
+    Returns:
+        List of vertex pairs (edges) at network boundaries
+    """
+    boundary_edges = set()
+
+    # For each triangle face
+    for face in faces:
+        v1, v2, v3 = face
+        labels = network_labels[[v1, v2, v3]]
+
+        # Check each edge of the triangle
+        edges = [(v1, v2), (v2, v3), (v3, v1)]
+
+        for i, (va, vb) in enumerate(edges):
+            # If vertices have different labels (and both are valid networks)
+            if labels[i % 3] != labels[(i + 1) % 3]:
+                if labels[i % 3] > 0 and labels[(i + 1) % 3] > 0:
+                    # Add edge (sorted to avoid duplicates)
+                    edge = tuple(sorted([va, vb]))
+                    boundary_edges.add(edge)
+
+    logger.info(f"Found {len(boundary_edges)} boundary edges")
+    return list(boundary_edges)
+
+
+def _create_contour_lines(
+    vertices: np.ndarray,
+    boundary_edges: List[Tuple[int, int]],
+    color: str = 'black',
+    width: float = 2.0
+) -> go.Scatter3d:
+    """
+    Create Plotly scatter plot for network boundary contours.
+
+    Args:
+        vertices: Vertex coordinates (N, 3)
+        boundary_edges: List of vertex index pairs
+        color: Line color
+        width: Line width
+
+    Returns:
+        Plotly Scatter3d trace for the contour lines
+    """
+    # Create line segments
+    x_lines = []
+    y_lines = []
+    z_lines = []
+
+    for v1, v2 in boundary_edges:
+        # Add line segment
+        x_lines.extend([vertices[v1, 0], vertices[v2, 0], None])
+        y_lines.extend([vertices[v1, 1], vertices[v2, 1], None])
+        z_lines.extend([vertices[v1, 2], vertices[v2, 2], None])
+
+    # Create trace
+    contour_trace = go.Scatter3d(
+        x=x_lines,
+        y=y_lines,
+        z=z_lines,
+        mode='lines',
+        line=dict(color=color, width=width),
+        name='Network Boundaries',
+        hoverinfo='skip',
+        showlegend=False
+    )
+
+    return contour_trace
 
 
 def _load_fsaverage_mesh_data(mesh: str = 'fsaverage', hemi: str = 'lh', template: str = 'fsaverage'):
@@ -52,38 +197,24 @@ def _load_fsaverage_mesh_data(mesh: str = 'fsaverage', hemi: str = 'lh', templat
 
     Returns:
         Tuple of (vertices, faces) as numpy arrays
+
+    Note:
+        MNI152NLin2009cAsym template uses fsaverage surfaces for visualization.
+        This is the standard approach in neuroimaging (e.g., fMRIPrep workflow).
+        Data in MNI152NLin2009cAsym space is projected to fsaverage surfaces.
     """
-    # Handle ICBM152/MNI152NLin2009cAsym template via TemplateFlow
+    # Handle ICBM152/MNI152NLin2009cAsym template
+    # Note: TemplateFlow has volumetric templates but not surface meshes for MNI152NLin2009cAsym
+    # Standard practice: use fsaverage surfaces with MNI space data
     if template == 'MNI152NLin2009cAsym' or mesh == 'MNI152NLin2009cAsym':
-        try:
-            import templateflow.api as tflow
-            # Get pial surface from TemplateFlow
-            hemi_suffix = 'L' if hemi == 'lh' else 'R'
-            mesh_file = tflow.get(
-                'MNI152NLin2009cAsym',
-                hemi=hemi_suffix,
-                density='32k',  # 32k vertices per hemisphere
-                suffix='pial',
-                extension='surf.gii'
-            )
-            # Load mesh geometry
-            coords, faces = surface.load_surf_mesh(mesh_file)
-            logger.info(f"Loaded MNI152NLin2009cAsym {hemi} surface ({coords.shape[0]} vertices)")
-            return coords, faces
-        except ImportError:
-            logger.warning("TemplateFlow not available. Install with: pip install templateflow")
-            logger.info("Falling back to fsaverage template...")
-        except Exception as e:
-            logger.warning(f"Could not load MNI152NLin2009cAsym surfaces: {e}")
-            logger.info("Falling back to fsaverage template...")
+        logger.info(f"Using fsaverage surfaces for MNI152NLin2009cAsym template (standard approach)")
+        # Use fsaverage or fsaverage5 as the actual mesh
+        actual_mesh = 'fsaverage' if mesh == 'MNI152NLin2009cAsym' else mesh
+    else:
+        actual_mesh = mesh
 
-    # Default: use fsaverage from nilearn
-    # If mesh is 'MNI152NLin2009cAsym' but TemplateFlow not available, fall back to fsaverage
-    if mesh == 'MNI152NLin2009cAsym':
-        mesh = 'fsaverage'  # Use default fsaverage as fallback
-        logger.info("Using fsaverage as fallback for MNI152NLin2009cAsym")
-
-    fsaverage = nilearn_datasets.fetch_surf_fsaverage(mesh=mesh)
+    # Load fsaverage surfaces from nilearn
+    fsaverage = nilearn_datasets.fetch_surf_fsaverage(mesh=actual_mesh)
 
     # Get mesh file path
     if hemi == 'lh':
@@ -115,6 +246,9 @@ def plot_interactive_surface_plotly(
     initial_camera: Optional[Dict[str, Any]] = None,
     show_colorbar: bool = True,
     opacity: float = 1.0,
+    parcellation: Optional[str] = None,
+    contour_color: str = 'black',
+    contour_width: float = 2.0,
 ) -> str:
     """
     Create fully interactive 3D brain surface visualization with Plotly.
@@ -140,6 +274,9 @@ def plot_interactive_surface_plotly(
         initial_camera: Camera position dict (e.g., {'eye': {'x': 0, 'y': 0, 'z': 2.5}})
         show_colorbar: Whether to show colorbar
         opacity: Mesh opacity (0-1)
+        parcellation: Network parcellation scheme ('yeo-7-thin', 'yeo-7-thick', 'yeo-17-thin', 'yeo-17-thick')
+        contour_color: Color for network boundary contours (default: 'black')
+        contour_width: Width of network boundary lines (default: 2.0)
 
     Returns:
         Path to saved HTML file
@@ -205,36 +342,25 @@ def plot_interactive_surface_plotly(
         vertices, faces = _load_fsaverage_mesh_data(mesh=mesh, hemi=hemi_code, template=template)
 
         # Project volume to surface
-        # For MNI152NLin2009cAsym, use TemplateFlow surfaces for projection
+        # Determine actual mesh to use
         if template == 'MNI152NLin2009cAsym' or mesh == 'MNI152NLin2009cAsym':
-            try:
-                import templateflow.api as tflow
-                hemi_suffix = 'L' if hemi_code == 'lh' else 'R'
-                surf_mesh = tflow.get(
-                    'MNI152NLin2009cAsym',
-                    hemi=hemi_suffix,
-                    density='32k',
-                    suffix='pial',
-                    extension='surf.gii'
-                )
-            except:
-                # Fall back to fsaverage
-                fallback_mesh = 'fsaverage' if mesh == 'MNI152NLin2009cAsym' else mesh
-                fsaverage = nilearn_datasets.fetch_surf_fsaverage(mesh=fallback_mesh)
-                surf_mesh = fsaverage.pial_left if hemi_code == "lh" else fsaverage.pial_right
+            # Use fsaverage surfaces for MNI152NLin2009cAsym (standard practice)
+            actual_mesh = 'fsaverage' if mesh == 'MNI152NLin2009cAsym' else mesh
         else:
-            # Use fsaverage surfaces
-            fsaverage = nilearn_datasets.fetch_surf_fsaverage(mesh=mesh)
-            surface_attr_map = {
-                "pial": "pial",
-                "inflated": "infl",
-                "white": "white",
-                "sphere": "sphere",
-            }
-            if surface_name not in surface_attr_map:
-                raise ValueError(f"surface_name must be one of {list(surface_attr_map.keys())}")
-            surf_attr = surface_attr_map[surface_name]
-            surf_mesh = getattr(fsaverage, f"{surf_attr}_left" if hemi_code == "lh" else f"{surf_attr}_right")
+            actual_mesh = mesh
+
+        # Load fsaverage surfaces
+        fsaverage = nilearn_datasets.fetch_surf_fsaverage(mesh=actual_mesh)
+        surface_attr_map = {
+            "pial": "pial",
+            "inflated": "infl",
+            "white": "white",
+            "sphere": "sphere",
+        }
+        if surface_name not in surface_attr_map:
+            raise ValueError(f"surface_name must be one of {list(surface_attr_map.keys())}")
+        surf_attr = surface_attr_map[surface_name]
+        surf_mesh = getattr(fsaverage, f"{surf_attr}_left" if hemi_code == "lh" else f"{surf_attr}_right")
 
         texture = surface.vol_to_surf(
             img,
@@ -286,6 +412,29 @@ def plot_interactive_surface_plotly(
         )
 
         fig.add_trace(mesh_trace)
+
+        # Add network parcellation contours if requested
+        if parcellation is not None:
+            logger.info(f"Adding {parcellation} network boundaries...")
+
+            # Load parcellation and project to surface
+            network_labels = _load_parcellation(parcellation, surf_mesh)
+
+            # Find network boundaries
+            boundary_edges = _find_network_boundaries(faces, network_labels)
+
+            # Create contour lines
+            if len(boundary_edges) > 0:
+                contour_trace = _create_contour_lines(
+                    vertices,
+                    boundary_edges,
+                    color=contour_color,
+                    width=contour_width
+                )
+                fig.add_trace(contour_trace)
+                logger.info(f"Added {len(boundary_edges)} network boundary edges")
+            else:
+                logger.warning(f"No network boundaries found for {hemi_code} hemisphere")
 
     # Configure layout
     plot_title = title or os.path.basename(nifti_path)

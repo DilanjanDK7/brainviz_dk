@@ -1,6 +1,13 @@
 include README.md
 include requirements.txt
 include LICENSE
-recursive-include docs *.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include .gitignore
+recursive-include docs *.md *.rst
 recursive-include examples *.py
 recursive-include tests *.py
+exclude tests/__pycache__
+exclude examples/__pycache__
+global-exclude *.pyc
+global-exclude __pycache__

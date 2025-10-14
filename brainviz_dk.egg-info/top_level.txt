@@ -1,4 +1,2 @@
-__init__
-__main__
-brainviz_dk
-plot
+examples
+tests

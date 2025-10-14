@@ -21,7 +21,7 @@ Main Options
 
    Output file or directory path. **Required** for plotting commands.
 
-.. option:: --plot-type {surface,volume,glass-brain,mosaic,roi,3d}
+.. option:: --plot-type {surface,volume,glass-brain,mosaic,roi,3d,plotly-3d}
 
    Type of plot to generate. Default: ``surface``
 
@@ -30,7 +30,8 @@ Main Options
    - **glass-brain**: Transparent 3D visualization
    - **mosaic**: Multi-slice mosaic display
    - **roi**: ROI/parcellation overlay
-   - **3d**: Interactive 3D visualization
+   - **3d**: Interactive 3D visualization (nilearn-based)
+   - **plotly-3d**: Plotly 3D interactive (fully rotatable, perfect for dorsal views!) ⭐ NEW!
 
 Utility Commands
 ----------------
@@ -148,6 +149,68 @@ Volumetric Plotting Options
 
       brainviz_dk --in brain.nii.gz --out mosaic.png --plot-type mosaic \
                   --display-mode z --n-slices 20
+
+Plotly 3D Interactive Options
+------------------------------
+
+.. option:: --plotly-mesh {fsaverage,fsaverage5,fsaverage6,MNI152NLin2009cAsym}
+
+   Surface mesh resolution for Plotly 3D. Default: ``fsaverage5``
+
+   - **fsaverage5**: Medium resolution (~10k vertices, 2-4 MB files) - Recommended!
+   - **fsaverage6**: High resolution (~40k vertices, 8-15 MB files)
+   - **fsaverage**: Maximum resolution (~163k vertices, 30-50 MB files)
+   - **MNI152NLin2009cAsym**: ICBM152 template (requires templateflow)
+
+   .. code-block:: bash
+
+      brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \
+                  --plotly-mesh fsaverage6
+
+.. option:: --plotly-template {fsaverage,MNI152NLin2009cAsym}
+
+   Brain template for Plotly 3D. Default: ``fsaverage``
+
+   - **fsaverage**: Standard FreeSurfer average template
+   - **MNI152NLin2009cAsym**: ICBM152 template (requires templateflow)
+
+   .. code-block:: bash
+
+      brainviz_dk --in brain.nii.gz --out brain_icbm.html --plot-type plotly-3d \
+                  --plotly-template MNI152NLin2009cAsym
+
+.. option:: --opacity OPACITY
+
+   Mesh opacity/transparency (0.0-1.0). Default: ``1.0``
+
+   - **1.0**: Fully opaque (no transparency)
+   - **0.7**: 30% transparent (good for depth perception)
+   - **0.5**: 50% transparent
+   - **0.0**: Fully transparent (invisible)
+
+   .. code-block:: bash
+
+      # Semi-transparent brain
+      brainviz_dk --in brain.nii.gz --out transparent.html --plot-type plotly-3d \
+                  --opacity 0.7
+
+.. option:: --radius RADIUS
+
+   Sampling radius in mm for volume-to-surface projection. Default: ``2.0``
+
+   .. code-block:: bash
+
+      brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \
+                  --radius 3.0
+
+.. option:: --no-colorbar
+
+   Hide colorbar in Plotly 3D visualization.
+
+   .. code-block:: bash
+
+      brainviz_dk --in brain.nii.gz --out clean.html --plot-type plotly-3d \
+                  --no-colorbar
 
 Quality & Output Options
 ------------------------
@@ -313,8 +376,8 @@ Volumetric Plotting
                --plot-type volume --display-mode y --cut-coords 7 \
                --colormap hot --dpi 600
 
-3D Interactive
-~~~~~~~~~~~~~~
+3D Interactive (nilearn-based)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Save to HTML**
 
@@ -329,6 +392,70 @@ Volumetric Plotting
 
    brainviz_dk --in activation.nii.gz --out plots/ \
                --plot-type 3d --colormap hot
+
+Plotly 3D Interactive (Fully Rotatable) ⭐ NEW!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Basic Interactive 3D**
+
+.. code-block:: bash
+
+   # Fully rotatable 3D - perfect for dorsal (top-down) views!
+   brainviz_dk --in activation.nii.gz --out brain_3d.html \
+               --plot-type plotly-3d --colormap hot
+
+**Single Hemisphere**
+
+.. code-block:: bash
+
+   # Left hemisphere only
+   brainviz_dk --in activation.nii.gz --out left_3d.html \
+               --plot-type plotly-3d --hemi left --colormap viridis
+
+**ICBM152 Template**
+
+.. code-block:: bash
+
+   # Use ICBM152/MNI152NLin2009cAsym template
+   brainviz_dk --in group_tstat.nii.gz --out icbm_3d.html \
+               --plot-type plotly-3d \
+               --plotly-template MNI152NLin2009cAsym \
+               --plotly-mesh MNI152NLin2009cAsym \
+               --colormap coolwarm
+
+**High Resolution**
+
+.. code-block:: bash
+
+   # Maximum quality (larger file size)
+   brainviz_dk --in activation.nii.gz --out high_res_3d.html \
+               --plot-type plotly-3d --plotly-mesh fsaverage \
+               --colormap hot
+
+**With Transparency**
+
+.. code-block:: bash
+
+   # Semi-transparent for depth perception
+   brainviz_dk --in activation.nii.gz --out transparent_3d.html \
+               --plot-type plotly-3d --opacity 0.7 --colormap plasma
+
+**Clean Presentation Mode**
+
+.. code-block:: bash
+
+   # No colorbar for presentations
+   brainviz_dk --in activation.nii.gz --out presentation.html \
+               --plot-type plotly-3d --no-colorbar --colormap hot
+
+**Statistical Map with Threshold**
+
+.. code-block:: bash
+
+   # T-statistic with proper thresholding
+   brainviz_dk --in t_stat.nii.gz --out t_stat_3d.html \
+               --plot-type plotly-3d --threshold 2.3 \
+               --colormap coolwarm
 
 ROI Overlay
 ~~~~~~~~~~~

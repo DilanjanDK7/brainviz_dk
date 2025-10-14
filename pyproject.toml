@@ -12,12 +12,30 @@ license = {text = "MIT"}
 authors = [
     {name = "Dilanjan DK", email = "ddiyabal@uwo.ca"}
 ]
+keywords = [
+    "neuroimaging",
+    "brain",
+    "visualization",
+    "nifti",
+    "mri",
+    "fmri",
+    "surface",
+    "plotting",
+    "nilearn",
+    "fsaverage",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Visualization",
     "Topic :: Scientific/Engineering :: Medical Science Apps.",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
@@ -36,6 +54,24 @@ dev = [
 templates = [
     "templateflow>=0.8.0",
 ]
+interactive = [
+    "plotly>=5.0.0",
+]
+imaging = [
+    "Pillow>=8.0.0",
+]
+all = [
+    "templateflow>=0.8.0",
+    "plotly>=5.0.0",
+    "Pillow>=8.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/dilanjan/brainviz_dk"
+Documentation = "https://brainviz-dk.readthedocs.io"
+Repository = "https://github.com/dilanjan/brainviz_dk"
+Issues = "https://github.com/dilanjan/brainviz_dk/issues"
+Changelog = "https://github.com/dilanjan/brainviz_dk/blob/main/CHANGELOG.md"
 
 [project.scripts]
 brainviz_dk = "brainviz_dk.__main__:main"

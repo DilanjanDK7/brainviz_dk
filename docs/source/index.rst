@@ -20,6 +20,9 @@ Features
    - High-resolution cortical surface visualization
    - Multiple viewing angles (lateral, medial, dorsal, ventral, anterior, posterior)
    - fsaverage mesh support (fsaverage, fsaverage5, fsaverage6)
+   - **Plotly 3D interactive viewer** - Fully rotatable in browser! ⭐ NEW!
+   - Perfect dorsal (top-down) views with mouse rotation
+   - ICBM152/MNI152NLin2009cAsym template support
    - Publication-quality output (up to 2400 DPI)
    - Vector formats (SVG, PDF, EPS) for infinite scalability
 
@@ -78,6 +81,22 @@ Generate a glass brain visualization:
        dpi=600
    )
 
+Create interactive Plotly 3D visualization:
+
+.. code-block:: python
+
+   from brainviz_dk import plot_interactive_surface_plotly
+
+   # Fully rotatable 3D - perfect for dorsal views!
+   plot_interactive_surface_plotly(
+       'activation_map.nii.gz',
+       'brain_3d.html',
+       hemi='both',
+       mesh='fsaverage5',
+       colormap='hot'
+   )
+   # Open brain_3d.html in browser and rotate with mouse!
+
 Command-Line Interface
 ----------------------
 
@@ -95,6 +114,9 @@ BrainViz_DK provides a comprehensive CLI:
    # Glass brain
    brainviz_dk --in brain.nii.gz --out glass.png --plot-type glass-brain \
                --dpi 600 --colormap hot
+
+   # Plotly 3D interactive (rotatable to any angle!)
+   brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d
 
    # High-quality publication output
    brainviz_dk --in brain.nii.gz --out plot.svg --plot-type surface \
@@ -119,6 +141,7 @@ Contents
 
    examples/surface_plotting
    examples/volumetric_plotting
+   examples/interactive_3d
    examples/batch_processing
    examples/quality_comparison
 
@@ -128,6 +151,7 @@ Contents
 
    api/plot
    api/volumetric
+   api/interactive3d
    api/templates
 
 .. toctree::

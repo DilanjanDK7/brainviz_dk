@@ -81,6 +81,10 @@ Examples:
   brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \\
               --plotly-mesh fsaverage --opacity 0.8
 
+  # With network parcellation contours (Yeo 7 or 17 networks)
+  brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \\
+              --parcellation yeo-7-thick --contour-color black --contour-width 2
+
   UTILITIES:
   # List quality presets
   brainviz_dk --list-presets
@@ -102,7 +106,7 @@ Examples:
     )
     main_group.add_argument(
         "--plot-type", dest="plot_type",
-        choices=["surface", "volume", "glass-brain", "mosaic", "roi", "3d"],
+        choices=["surface", "volume", "glass-brain", "mosaic", "roi", "3d", "plotly-3d"],
         default="surface",
         help="Type of plot to generate (default: surface)",
     )
@@ -175,6 +179,54 @@ Examples:
         type=int,
         default=12,
         help="Number of slices for mosaic view (default: 12)",
+    )
+
+    # === PLOTLY 3D INTERACTIVE OPTIONS ===
+    plotly3d_group = parser.add_argument_group("Plotly 3D Interactive Options")
+    plotly3d_group.add_argument(
+        "--plotly-mesh", dest="plotly_mesh",
+        choices=["fsaverage", "fsaverage5", "fsaverage6", "MNI152NLin2009cAsym"],
+        default="fsaverage5",
+        help="Surface mesh resolution for Plotly 3D (default: fsaverage5)",
+    )
+    plotly3d_group.add_argument(
+        "--plotly-template", dest="plotly_template",
+        choices=["fsaverage", "MNI152NLin2009cAsym"],
+        default="fsaverage",
+        help="Brain template for Plotly 3D (default: fsaverage)",
+    )
+    plotly3d_group.add_argument(
+        "--opacity", dest="opacity",
+        type=float,
+        default=1.0,
+        help="Mesh opacity/transparency (0.0-1.0, default: 1.0)",
+    )
+    plotly3d_group.add_argument(
+        "--radius", dest="radius",
+        type=float,
+        default=2.0,
+        help="Sampling radius in mm for volume-to-surface projection (default: 2.0)",
+    )
+    plotly3d_group.add_argument(
+        "--no-colorbar", dest="no_colorbar",
+        action="store_true",
+        help="Hide colorbar in Plotly 3D visualization",
+    )
+    plotly3d_group.add_argument(
+        "--parcellation", dest="parcellation",
+        choices=["yeo-7-thin", "yeo-7-thick", "yeo-17-thin", "yeo-17-thick"],
+        help="Network parcellation scheme to overlay (adds contour lines at network boundaries)",
+    )
+    plotly3d_group.add_argument(
+        "--contour-color", dest="contour_color",
+        default="black",
+        help="Color for network boundary contours (default: black)",
+    )
+    plotly3d_group.add_argument(
+        "--contour-width", dest="contour_width",
+        type=float,
+        default=2.0,
+        help="Width of network boundary contour lines (default: 2.0)",
     )
 
     # === QUALITY OPTIONS ===
@@ -303,6 +355,8 @@ Examples:
             exit_code = handle_roi_overlay(args, plot_kwargs)
         elif args.plot_type == "3d":
             exit_code = handle_3d_interactive(args, plot_kwargs)
+        elif args.plot_type == "plotly-3d":
+            exit_code = handle_plotly_3d_interactive(args, plot_kwargs)
         else:
             print(f"❌ Unknown plot type: {args.plot_type}", file=sys.stderr)
             exit_code = 1
@@ -530,6 +584,92 @@ def handle_3d_interactive(args, plot_kwargs):
         print(f"✓ Saved interactive 3D HTML: {html_file}")
 
     return 0
+
+
+def handle_plotly_3d_interactive(args, plot_kwargs):
+    """Handle Plotly 3D interactive plotting with full rotation capabilities."""
+    from .logging_config import get_logger
+    logger = get_logger()
+
+    if args.verbose:
+        print("Generating Plotly 3D interactive visualization...")
+        print(f"  Mesh: {args.plotly_mesh}")
+        print(f"  Template: {args.plotly_template}")
+        print(f"  Hemisphere(s): {args.hemi}")
+        print(f"  Opacity: {args.opacity}")
+
+    # Map hemisphere arguments
+    hemi_map = {
+        "both": "both",
+        "lh": "lh",
+        "rh": "rh",
+        "left": "lh",
+        "right": "rh",
+    }
+    hemi = hemi_map.get(args.hemi, "both")
+
+    # Validate opacity
+    if not (0.0 <= args.opacity <= 1.0):
+        print("❌ Error: opacity must be between 0.0 and 1.0", file=sys.stderr)
+        return 1
+
+    # Ensure output has .html extension
+    out_path = Path(args.output_path)
+    if out_path.suffix not in ['.html', '.htm']:
+        if out_path.is_dir() or not out_path.suffix:
+            # If directory or no extension, create filename
+            os.makedirs(out_path, exist_ok=True)
+            out_path = out_path / "brain_plotly_3d.html"
+        else:
+            # Add .html extension
+            out_path = out_path.with_suffix('.html')
+
+    try:
+        # Create Plotly 3D visualization
+        output_file = plot_interactive_surface_plotly(
+            args.nifti_path,
+            str(out_path),
+            hemi=hemi,
+            mesh=args.plotly_mesh,
+            template=args.plotly_template,
+            colormap=args.colormap,
+            threshold=args.threshold,
+            radius=args.radius,
+            show_colorbar=not args.no_colorbar,
+            opacity=args.opacity,
+            parcellation=args.parcellation,
+            contour_color=args.contour_color,
+            contour_width=args.contour_width,
+        )
+
+        # Report file size
+        file_size_mb = os.path.getsize(output_file) / (1024**2)
+
+        print(f"✓ Generated Plotly 3D visualization: {output_file}")
+        print(f"  File size: {file_size_mb:.2f} MB")
+        print()
+        print("📖 How to use:")
+        print("  • Open the HTML file in any web browser")
+        print("  • Drag with mouse to ROTATE to any angle (including perfect dorsal view!)")
+        print("  • Scroll to ZOOM in/out")
+        print("  • Right-click and drag to PAN")
+        print(f"  • Hemispheres are positioned {1 if hemi == 'both' else 'N/A'}mm apart")
+
+        if args.opacity < 1.0:
+            print(f"  • Transparency enabled: {args.opacity:.1f} opacity")
+
+        return 0
+
+    except ImportError as e:
+        print(f"❌ Error: {e}", file=sys.stderr)
+        print("   Install plotly with: pip install plotly", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"❌ Error creating Plotly 3D visualization: {e}", file=sys.stderr)
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        return 1
 
 
 if __name__ == "__main__":

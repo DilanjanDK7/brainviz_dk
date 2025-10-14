@@ -1,5 +1,22 @@
+# Core dependencies
 numpy>=1.19.0
 nibabel>=3.0.0
 nilearn>=0.9.0
 matplotlib>=3.3.0
-templateflow>=0.8.0
+
+# Optional dependencies (install as needed)
+# For TemplateFlow templates:
+# templateflow>=0.8.0
+
+# For Plotly 3D interactive visualizations:
+# plotly>=5.0.0
+
+# For enhanced image processing (mosaics):
+# Pillow>=8.0.0
+
+# Development dependencies
+# pytest>=6.0
+# pytest-cov>=2.0
+
+# To install all optional dependencies:
+# pip install -e ".[all]"

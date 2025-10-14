@@ -16,6 +16,7 @@ BrainViz_DK requires Python 3.8 or higher.
 **Optional Dependencies:**
 
 - templateflow >= 0.8.0 (for ICBM152NLin2009cAsym templates)
+- plotly >= 5.0.0 (for Plotly 3D interactive visualizations - highly recommended!)
 
 Installation Methods
 --------------------
@@ -56,8 +57,22 @@ This installs testing and documentation dependencies:
 - sphinx
 - sphinx_rtd_theme
 
-Optional: TemplateFlow Setup
------------------------------
+Optional Features Setup
+-----------------------
+
+Plotly 3D Interactive Viewer (Recommended!)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For fully rotatable 3D brain visualizations with perfect dorsal views:
+
+.. code-block:: bash
+
+   pip install plotly
+
+This enables the ``plot_interactive_surface_plotly()`` function and ``--plot-type plotly-3d`` CLI option.
+
+TemplateFlow Support
+~~~~~~~~~~~~~~~~~~~~
 
 For enhanced template support (ICBM152NLin2009cAsym), install TemplateFlow:
 
@@ -66,6 +81,15 @@ For enhanced template support (ICBM152NLin2009cAsym), install TemplateFlow:
    pip install templateflow
 
 First-time use will automatically download required templates (~200 MB).
+
+Install All Optional Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To get the complete BrainViz_DK experience:
+
+.. code-block:: bash
+
+   pip install plotly templateflow
 
 Verifying Installation
 ----------------------

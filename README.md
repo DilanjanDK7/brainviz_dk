@@ -14,9 +14,10 @@ BrainViz_DK is a comprehensive Python package for creating publication-quality b
 - **Multiple viewing angles**: lateral, medial, dorsal, ventral, anterior, posterior
 - **Publication-quality output**: up to 2400 DPI, vector formats (SVG, PDF, EPS)
 - **Quality presets**: draft, standard, publication, print
-- **3D interactive plots**: HTML-based rotatable visualizations
+- **3D interactive plots**: HTML-based rotatable visualizations (nilearn & Plotly)
+- **Plotly 3D viewer**: Fully rotatable, high-quality 3D meshes with perfect dorsal views
 - **Flexible surface types**: pial, inflated, white, sphere
-- **Multiple mesh resolutions**: fsaverage, fsaverage5, fsaverage6
+- **Multiple mesh resolutions**: fsaverage, fsaverage5, fsaverage6, ICBM152
 
 ### Volumetric Rendering
 - **Orthogonal slice views** (3-plane visualization)
@@ -59,10 +60,17 @@ BrainViz_DK is a comprehensive Python package for creating publication-quality b
 pip install numpy nibabel nilearn matplotlib
 ```
 
-### With TemplateFlow (Optional - for ICBM152 templates)
+### With Optional Features
 
 ```bash
+# For ICBM152 templates via TemplateFlow
 pip install templateflow
+
+# For Plotly 3D interactive visualizations (recommended!)
+pip install plotly
+
+# Install all optional features
+pip install templateflow plotly
 ```
 
 ### Development Installation
@@ -96,6 +104,13 @@ brainviz_dk --in brain.nii.gz --out slices.png --plot-type volume \
 # Mosaic view
 brainviz_dk --in brain.nii.gz --out mosaic.png --plot-type mosaic \
             --display-mode z --n-slices 20
+
+# Plotly 3D interactive (rotatable to any angle including perfect dorsal view!)
+brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d
+
+# Plotly 3D with ICBM152 template and transparency
+brainviz_dk --in brain.nii.gz --out brain_3d.html --plot-type plotly-3d \
+            --plotly-template MNI152NLin2009cAsym --opacity 0.8
 
 # List available quality presets
 brainviz_dk --list-presets
@@ -192,7 +207,7 @@ plot_mosaic(
 )
 ```
 
-#### Interactive 3D
+#### Interactive 3D (nilearn-based)
 
 ```python
 from brainviz_dk import plot_3d_interactive
@@ -209,6 +224,44 @@ view.open_in_browser()
 
 # Or save to HTML
 view.save_as_html('brain_3d.html')
+```
+
+#### Plotly 3D Interactive (Fully Rotatable - RECOMMENDED!)
+
+```python
+from brainviz_dk import plot_interactive_surface_plotly
+
+# Create Plotly 3D visualization with both hemispheres (1mm spacing)
+plot_interactive_surface_plotly(
+    'activation.nii.gz',
+    'brain_plotly_3d.html',
+    hemi='both',              # Both hemispheres extremely close (1mm apart)
+    mesh='fsaverage5',        # Good balance of quality and file size
+    template='fsaverage',     # Or 'MNI152NLin2009cAsym' for ICBM152
+    colormap='hot',
+    opacity=1.0,              # Set to 0.5-0.9 for transparency
+    show_colorbar=True
+)
+# Opens in browser - rotate with mouse to see perfect dorsal (top-down) view!
+
+# Single hemisphere with ICBM152 template
+plot_interactive_surface_plotly(
+    'activation.nii.gz',
+    'brain_left_icbm.html',
+    hemi='lh',
+    mesh='MNI152NLin2009cAsym',
+    template='MNI152NLin2009cAsym',
+    colormap='hot'
+)
+
+# Transparent overlay (great for showing depth)
+plot_interactive_surface_plotly(
+    'activation.nii.gz',
+    'brain_transparent.html',
+    hemi='both',
+    opacity=0.7,              # 70% opaque (30% transparent)
+    colormap='viridis'
+)
 ```
 
 ## 🎨 Quality Presets
@@ -440,6 +493,16 @@ Validated with real neuroimaging data from group-level fMRI analysis.
 - ✅ Examples and tutorials
 - ✅ Best practices guides
 
+**Phase 4: Plotly 3D Interactive Viewer** ⭐ NEW!
+- ✅ Fully rotatable 3D brain meshes in browser
+- ✅ Perfect dorsal (top-down) view capability
+- ✅ ICBM152/MNI152NLin2009cAsym template support
+- ✅ Extremely close hemisphere spacing (1mm)
+- ✅ Transparency/opacity control (0.0-1.0)
+- ✅ High-quality fsaverage5 default mesh
+- ✅ Standalone HTML output (no Python needed)
+- ✅ Full CLI integration with --plot-type plotly-3d
+
 ## 🛠️ Requirements
 
 **Core Dependencies:**
@@ -451,6 +514,7 @@ Validated with real neuroimaging data from group-level fMRI analysis.
 
 **Optional:**
 - templateflow >= 0.8.0 (for ICBM152 templates)
+- plotly >= 5.0.0 (for Plotly 3D interactive visualizations)
 
 **Development:**
 - pytest >= 6.0.0
